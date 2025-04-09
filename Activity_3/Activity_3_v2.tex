@@ -1,0 +1,133 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+
+% Define custom colors
+\definecolor{primarycolor}{RGB}{70, 130, 180} % Steel Blue
+\definecolor{secondarycolor}{RGB}{245, 245, 245} % Light Grey
+\definecolor{accentcolor}{RGB}{255, 140, 0} % Dark Orange
+
+% Format section titles
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{primarycolor}}
+  {\thesection.}{0.5em}{}[\titlerule]
+
+% Set up fancy headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Team Oaklaura}
+\fancyhead[R]{CS340 - Introduction to Databases, Spring 2025}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{primarycolor}\leaders\hrule height \headrulewidth\hfill}}
+
+% Custom item formatting
+\setlist[itemize]{leftmargin=*, label={\color{accentcolor}$\bullet$}}
+
+\begin{document}
+
+\begin{center}
+\large\textcolor{primarycolor}{\textbf{Project Group \#1}}\\[0.3cm]
+\large\textbf{CS340 - Introduction to Databases, Spring 2025}\\[0.5cm]
+\huge\textbf{Team Contract for Group Project}\\[1.25cm]
+\end{center}
+
+\section{Team Establishment}
+
+\begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, title=\textbf{Team Members and Roles:}]
+\begin{itemize}
+  \item \textbf{Grant Wu}, \textit{Web Server Development, Backend Development, Project Manager}
+  \item \textbf{Jessica Ramirez}, \textit{User-Interface Development, Backend Development, Documentation Lead}
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, title=\textbf{Role Responsibilities:}]
+\begin{itemize}
+  \item \textbf{Web Server Development (GW):} Build out code base to manage communication between client UI and database backend.
+    
+  \vspace{0.2cm}
+  
+  \item \textbf{Backend Development (GW/JR):} Management and storage of data utilized by the application, including Database design and defining of SQL queries for extracting information of interest.
+  
+  \vspace{0.2cm}
+  
+  \item \textbf{Documentation Lead (JR):} Finalize and submit reports on behalf of the Team, manage GitHub repository for revision control and post discussion related items on EdDiscussion.
+  
+  \vspace{0.2cm}
+  
+  \item \textbf{Project Manager (GW):} Organize agendas for weekly meetings—including recording of and following up on action items—communicate upcoming project deadlines to ensure deliverables are completed on time.
+   
+   \vspace{0.2cm}
+    
+  \item \textbf{User-Interface Development (JR):} Build out code base for client-facing user interface that displays and collects information of interest.
+
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+\section{Team Name: ``Team Oaklaura"}
+
+\vspace{0.5cm}
+
+\section{Communication Strategy}
+\begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, arc=5mm]
+\begin{itemize}
+  \item The team will utilize \textbf{email} and/or \textbf{Google Doc’s} for exchange of documentation drafts/notes, \textbf{text} messages for quick/informal communication and \textbf{Microsoft Teams} for in-person meetings. 
+    
+ \vspace{0.2cm}
+    
+  \item Team members commit to responding to communications \textbf{within 24 business hours}. In the event of travel or anticipated unavailability, team members will provide advance notice sufficient to ensure project continuity.
+    
+  \vspace{0.2cm}  
+  
+  \item The team will convene weekly on \textbf{Friday mornings at 9:30am CST}, with flexibility to reschedule based on academic obligations and deadlines (to be communicated in advance). The Project Manager will prepare and send out an agenda for this meeting prior to the start, to keep discussions organized. All action items and person(s) accountable will be recorded and shared with the group.
+
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+\section{Team Policies and Collaborative Framework}
+\begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, arc=5mm]
+\begin{itemize}
+  \item Team goals include \textbf{on-time completion} of all Project steps, as well as a final project that can be utilized in team member’s personal portfolios to showcase creative and technically sound work.
+
+  \vspace{0.2cm}
+
+  \item Project direction and inspiration will be \textbf{guided by shared interests and mutual goals}, such that team engagement and creativity is maximized. We may consult with others (non-team members) knowledgeable in the field(s) of interest to provide context and guidance to our project framework. Where disagreements in project direction may occur, the pro’s and con’s of each route will be established, and that which is most in line with the established project goals will be followed.
+   
+  \vspace{0.2cm}
+    
+  \item Google Doc's will be utilized for working drafts of documents, such that \textbf{collaborative input} is accessible. Once finalized, the files link within Canvas will be used to upload non-Google docs, such as \LaTeX\ renderings used for final submissions. The local storage/working space for each team member is up to their discretion, however \textbf{source code will be managed through GitHub} with proper version control to maintain code integrity. 
+  
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+
+\begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, title=\textbf{Team Member Response Procedures:}]
+\begin{itemize}
+  \item \textbf{Uncertainty or confusion:} When encountering conceptual or implementation challenges, team members will first consult each other for clarification. If a resolution cannot be reached through internal discussion, one or both team members will bring the issue to course office hours for external additional guidance. Team members will reconvene following office hours to determine a suitable path forward. Subsequent check-ins will be used to ensure progress is being made.
+ 
+ \vspace{0.2cm}
+
+  \item \textbf{Communication breakdown:} If a team member fails to respond within the agreed upon response time (one business day), all methods of communication should be attempted during an additional grace period that will be afforded. Persistent non-communication exceeding one week will necessitate escalation to course staff for intervention and possible team restructuring. Team members will act with empathy towards each other and be communicative and transparent with each other as to changing circumstances that may affect Project progress.
+  
+  \vspace{0.2cm}
+   
+  \item \textbf{Time/Schedule conflicts:} Team members experiencing difficulties meeting deadlines will provide notification to their partner as soon as an issue is identified, such that ample time is allocated to ensure mutual deliverables are completed and submitted on time. This may potentially necessitate the other group member to assume activities outside of their established roles. Our team approach will emphasize collective responsibility rather than individual accountability tracking.
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}
