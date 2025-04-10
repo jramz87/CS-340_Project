@@ -48,7 +48,7 @@
 \begin{center}
 \large\textcolor{primarycolor}{\textbf{Project Group \#1}}\\[0.3cm]
 \large\textbf{Grant Wu and Jessica Ramirez}\\[0.3cm]
-\huge\textbf{Project Step 1 - Database Design}\\[1.25cm]
+\huge\textbf{Project Step 1 - Proposal Draft}\\[1.25cm]
 \end{center}
 
 \section{The Oaklaura Bike Cooperative}
@@ -81,7 +81,7 @@ Contains details on a particular bike within the co-op
   \item \textbf{bikeID [PK]:} int, not NULL, auto\_increment
   \item \textbf{color:} enum('Black', 'White', 'Red', 'Blue', 'Green', 'Pink', 'Purple', 'Yellow', 'Orange', 'Silver', 'Other'), not NULL 
   \item \textbf{style:} enum('Mountain', 'Road', 'Fat', 'Hybrid', 'Enduro', 'BMX', 'Cruiser', 'Kids', 'Electric'), not NULL
-  \item \textbf{brand:} varchar(45)
+  \item \textbf{brand:} varchar(45), not NULL
   \item \textbf{status:} enum('In Repair', 'Employee Review', 'For Sale', 'Sold'), not NULL
   \item \textbf{dateReceived:} date, not NULL
   \item \textbf{completed:} tinyint(default 0=false), not NULL
@@ -108,8 +108,8 @@ Holds information on store employees and volunteers
   \item \textbf{personnelID [PK]:} int, not NULL, auto\_increment
   \item \textbf{firstName:} varchar(45) not NULL
   \item \textbf{lastName:} varchar(45) not NULL
-  \item \textbf{phone:} varchar(20)
-  \item \textbf{email:} varchar(100), not NULL, unique
+  \item \textbf{phone:} varchar(20), not NULL
+  \item \textbf{email:} varchar(100), not NULL
   \item \textbf{role:} enum('Employee', 'Volunteer'), not NULL
 \end{itemize}
 \vspace{0.2cm}
@@ -133,7 +133,7 @@ Holds customer information
   \item \textbf{customerID [PK]:} int, not NULL, auto\_increment
   \item \textbf{firstName:} varchar(45) not NULL
   \item \textbf{lastName:} varchar(45) not NULL
-  \item \textbf{phone:} varchar(20)
+  \item \textbf{phone:} varchar(20), not NULL
   \item \textbf{email:} varchar(100), not NULL, UNIQUE
 \end{itemize}
 \vspace{0.2cm}
@@ -157,7 +157,7 @@ Holds repair information performed on a particular bikes (Bikes\_StorePersonnel 
   \item \textbf{bikeID [FK - Bikes]:} int, not NULL
   \item \textbf{dateRepaired:} datetime, not NULL
   \item \textbf{hoursSpent:} decimal(4,2), not NULL
-  \item \textbf{description:} varchar(255)
+  \item \textbf{description:} varchar(255), not NULL
 \end{itemize}
 \vspace{0.2cm}
 
@@ -178,7 +178,7 @@ Holds information pertaining to the sale of a particular bike (Bikes\_StorePerso
 \begin{itemize}
   \item \textbf{salesID [PK]:} int, not NULL, auto\_increment
   \item \textbf{personnelID [FK - StorePersonnel]:} int, not NULL
-  \item \textbf{bikeID [FK - Bikes]:} int, not NULL
+  \item \textbf{bikeID [FK - Bikes]:} int, not NULL, unique
   \item \textbf{customerID [FK - Customers]:} int, not NULL
   \item \textbf{dateSold:} date, not NULL
   \item \textbf{price:} decimal(5,2), not NULL
