@@ -192,11 +192,15 @@ This review is entirely original, and AI was not used in any capacity to write i
 
 \begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, arc=5mm]
 Based on the feedback we received on our initial draft, the following actions were made:
+\vspace{0.2cm}
 \begin{itemize}
-  \item \textbf{via ML/AM:} Numerical facts have been added to the overview to provide context and establish the scope of the database.
-  \item \textbf{via ML:} bikeID in RepairReports was changed to a nullable FK, to facilitate documentation of non-bike specific work, such as cleaning and fixing stock parts such as cassettes, wheels and derailleurs.
-  \item \textbf{via TG:} It was suggested that we combine the StorePersonnel and Customers entities. While combining customers and store personnel into the same entity is an interesting idea, we think differentiating between them is advantageous in that: a) it distinguishes between service providers and service recipients, b) it allows flexibility to add special attributes to these entities later in the future (skills for StorePersonnel, payment info for Customers), and c) Customer info may require additional privacy/security considerations compared to StorePersonnel. For these reasons, we decided to keep the separation between Customers and StorePersonnel as initially proposed.
-  \item \textbf{via DS:} An insertion anomaly was identified in the previous formulation of the Customer-SalesReports relationship, where each Customer corresponded to one-to-many SalesReports. This has been altered here such that now each Customer corresponds to zero-to-many SalesReports. This change now allows for a Customer to be created without necessitating a linked SalesReport, to handle situations where we may want to acquire information from a potential Customer. 
+  \item \textbf{Suggestion from ML/AM:} Numerical facts have been added to the overview to provide context and establish the scope of the database.
+  \vspace{0.1cm}
+  \item \textbf{Suggestion from ML:} bikeID in RepairReports was changed to a nullable FK, to facilitate documentation of non-bike specific work, such as cleaning and fixing stock parts such as cassettes, wheels and derailleurs.
+  \vspace{0.1cm}
+  \item \textbf{Suggestion from TG:} It was suggested that we combine the StorePersonnel and Customers entities. While combining customers and store personnel into the same entity is an interesting idea, we think differentiating between them is advantageous in that: a) it distinguishes between service providers and service recipients, b) it allows flexibility to add special attributes to these entities later in the future (skills for StorePersonnel, payment info for Customers), and c) Customer info may require additional privacy/security considerations compared to StorePersonnel. For these reasons, we decided to keep the separation between Customers and StorePersonnel as initially proposed.
+  \vspace{0.1cm}
+  \item \textbf{Suggestion from DS:} An insertion anomaly was identified in the previous formulation of the Customer-SalesReports relationship, where each Customer corresponded to one-to-many SalesReports. This has been altered here such that now each Customer corresponds to zero-to-many SalesReports. This change now allows for a Customer to be created without necessitating a linked SalesReport, to handle situations where we may want to acquire information from a potential Customer. 
 \end{itemize}
 \vspace{0.2cm}
 
@@ -208,10 +212,13 @@ Based on the feedback we received on our initial draft, the following actions we
 
 \begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, arc=5mm]
 Based on internal conversations, the following actions were made:
+\vspace{0.2cm}
 \begin{itemize}
-  \item \textbf{Removed personnelID as FK within SalesReports:} To avoid documenting an additional M:M relationship between StorePersonnel and Customers we removed the tracking of the StorePersonnel from the SalesReports entity.
-  \item \textbf{Modified ERD:} The ERD was modified such that the relationship between StorePersonnel and SalesReports was removed as discussed above.
-  \item \textbf{Reclassified relationship between Customers and SalesReports:} We have reclassified the relationship between Customers and SaleReports to be non-identifying since they do not share a primary key.
+  \item \textbf{Removed personnelID as FK within SalesReports:} To avoid documenting an additional M:M relationship between StorePersonnel and Customers we removed the tracking of the StorePersonnel from the SalesReports entity. We do not consider this to be important information to track and removal of it greatly simplifies the database design.
+  \vspace{0.1cm}
+  \item \textbf{Modified ERD:} The ERD was modified such that the relationship between StorePersonnel and SalesReports was removed, as discussed above.
+  \vspace{0.1cm}
+  \item \textbf{Reclassified relationship between Customers and SalesReports:} We have reclassified the relationship between Customers and SaleReports to be non-identifying since they do not share a primary key. We believe we misunderstood this concept before and erroneously classified the relationship as an identifying one.
   \end{itemize}
 \vspace{0.2cm}
 
@@ -222,15 +229,15 @@ Based on internal conversations, the following actions were made:
 \begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, arc=5mm]
 \begingroup
 \large
-The Oaklaura Bike Cooperative is a non-profit organization that accepts donations of old or broken bicycles, refurbishes them, and then sells them at an affordable price. The co-op sees 50-100 bicycles enter and exit their doors on a monthly basis. Due to limited funding, the co-op operates with a small team of ten employees and relies heavily on volunteers to assist with bicycle repairs. At the current time there are about 100 volunteers that donate their time, and this is expected to grow over the course of the next five years. The co-op’s limited funding also requires they use a basic POS system that can only process one bike sale at a time, setting a limit of one bike per sales order. The co-op brings in on average between \$10,000 and \$25,000 per month, and most of this revenue is used to support the small team of dedicated employees as well as to provide community engagement events. 
+The Oaklaura Bike Cooperative is a non-profit organization that accepts donations of old or broken bicycles, refurbishes them, and then sells them at an affordable price. The co-op sees 50-100 bicycles enter and exit their doors on a monthly basis. Due to limited funding, the co-op operates with a small team of 10 employees and relies heavily on volunteers to assist with bicycle repairs. At the current time there are about 100 volunteers that donate their time, and this is expected to grow over the course of the next five years. The co-op’s limited funding also requires they use a basic POS system that can only process one bike sale at a time, setting a limit of one bike per sales order. The co-op brings in on average between \$10,000 and \$25,000 per month, and most of this revenue is used to support the small team of dedicated employees as well as to provide community engagement events. 
 
 \vspace{0.2cm}
 
-Store Personnel consist of both volunteers and employees. Most volunteers are not experienced bike mechanics, so they often can't fully repair a bike during the few hours the co-op is open for volunteer work. To maintain continuity and organization, volunteers are expected to repair what they can during their shift and document their progress in a report. This allows the next volunteer and/or employee to review the logs and continue the work where the previous one left off. Sometimes volunteers engage in non-bike specific work, such as cleaning and fixing stock parts such as cassettes, wheels and derailleurs. Once a volunteer believes a bike is fully repaired, a trained employee inspects it to ensure it meets safety standards before placing it on the sales floor.
+Store personnel consist of both volunteers and employees. Most volunteers are not experienced bike mechanics, so they often can't fully repair a bike during the few hours the co-op is open for volunteer work. To maintain continuity and organization, volunteers are expected to repair what they can during their shift and document their progress in a report. This allows the next volunteer and/or employee to review the logs and continue the work where the previous one left off. Sometimes volunteers engage in non-bike specific work, such as cleaning and fixing stock parts such as cassettes, wheels and derailleurs, which gets documented in these repair reports as well. Once a volunteer believes a bike is fully repaired, a trained employee inspects it to ensure it meets safety standards before placing it on the sales floor. Once there, a bike can be sold, a transaction which is tracked through a sales report.
 
 \vspace{0.2cm}
 
-Historically, the co-op tracked repair progress and sales using handwritten notecards stored in a filing cabinet. However, as the organization grows, this system has become increasingly difficult to manage. Implementing a database would be an ideal solution for organizing and sharing information between volunteers and employees about the status of each bicycle.
+Historically, the co-op tracked repair progress and sales using handwritten notecards stored in a filing cabinet. However, as the organization grows, this system has become increasingly difficult to manage. Implementing a database would be an ideal solution for organizing and sharing information between volunteers and employees about the status of each bicycle, as well as for tracking the inventory and sales history of the ever expanding co-op.
 
 \endgroup
 \end{tcolorbox}
@@ -258,9 +265,8 @@ Contains details on a particular bike that resides within the co-op.
 \vspace{0.2cm}
 \begin{itemize}
   \item M:M relationship between Bikes and StorePersonnel is implemented with bikeID and personnelID as FK's within both RepairReports and within SalesReports.
-  \item 1:1 relationship between Bikes and SalesReports is implemented by bikeID as a FK within SalesReports. \textit{Note that due to our outdated POS system, only one bike can be sold at a time (i.e. only one Bike instance per SalesReport instance).}
+  \item 1:1 relationship between Bikes and SalesReports is implemented by bikeID as a FK within SalesReports. \textit{Note: due to our outdated POS system, only one bike can be sold at a time (i.e. only one Bike can appear on each SalesReport).}
   \item 1:M relationship between Bikes and RepairReports is implemented with bikeID as a FK within RepairReports.
-  \item 1:M relationship between Bikes and SalesReports is implemented with bikeID as a FK within SalesReports.
 \end{itemize}
 \end{tcolorbox}
 
@@ -352,7 +358,7 @@ Holds information pertaining to the sale of a particular bike.
 \textbf{Relationships:}
 \vspace{0.2cm}
 \begin{itemize}
-  \item 1:1 relationship between Bikes and SalesReports is implemented by bikeID as a FK within SalesReports. \textit{Note that due to our outdated POS system, only one bike can be sold at a time (i.e. only one Bike instance per SalesReport instance).}
+  \item 1:1 relationship between Bikes and SalesReports is implemented by bikeID as a FK within SalesReports. \textit{Note: due to our outdated POS system, only one bike can be sold at a time (i.e. only one Bike can appear on each SalesReport).}
   \item 1:M relationship between SalesReports and Customers is implemented with customerID as a FK within SalesReports.
 \end{itemize}
 \end{tcolorbox}
