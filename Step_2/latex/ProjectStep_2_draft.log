@@ -1,16 +1,22 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.1.9)  29 APR 2025 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdftex 2025.1.9)  29 APR 2025 10:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **ProjectStep_2_draft.tex
 (./ProjectStep_2_draft.tex
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+./ProjectStep_2_draft.tex:1: Undefined control sequence.
+l.1 \documentclass
+                  {article}
+? 
+./ProjectStep_2_draft.tex:1: Emergency stop.
+l.1 
+    
+End of file on the terminal!
+
+./ProjectStep_2_draft.tex:1:  ==> Fatal error occurred, no output PDF file prod
+uced!
+.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count184
 \c@section=\count185
