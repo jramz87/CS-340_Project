@@ -94,9 +94,18 @@ app.get('/customers', async (req, res) => {
 app.get('/repairreports', async (req, res) => {
     try {
         // Create and execute our queries
-        const query = 'SELECT * FROM RepairReports;';
-        const [repairreports] = await db.query(query);
-        res.status(200).json({ repairreports });  // Send the results to the frontend
+        const query1 = 'SELECT * FROM RepairReports;';
+        const query2 = 'SELECT StorePersonnel.personnelID, StorePersonnel.role, Contacts.firstName, Contacts.lastName \
+                        FROM StorePersonnel \
+                        INNER JOIN Contacts ON StorePersonnel.contactID = Contacts.contactID \
+                        ORDER BY Contacts.contactID;';
+        const query3 = 'SELECT Bikes.bikeID, Bikes.color, Bikes.style, Bikes.dateReceived FROM Bikes \
+                        WHERE Bikes.status = "In Repair" OR Bikes.status = "In Review" \
+                        ORDER BY Bikes.bikeID;';
+        const [repairreports] = await db.query(query1);
+        const [storepersonnel] = await db.query(query2);
+        const [bikes] = await db.query(query3);
+        res.status(200).json({ repairreports, storepersonnel, bikes });  // Send the results to the frontend
 
     } catch (error) {
         console.error("Error executing queries:", error);

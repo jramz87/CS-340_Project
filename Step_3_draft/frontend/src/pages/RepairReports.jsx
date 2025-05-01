@@ -4,11 +4,14 @@
 
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
 import TableRow from '../components/TableRow';
+import CreateRepairReport from '../components/CreateRepairReport';
 
 function RepairReports({ backendURL }) {
 
         // Set up a state variable `bikes` to store and display the backend response
         const [repairreports, setRepairReports] = useState([]);
+        const [storepersonnel, setStorePersonnel] = useState([]);
+        const [bikes, setBikes] = useState([]);
 
         const getData = async function () {
             try {
@@ -16,10 +19,12 @@ function RepairReports({ backendURL }) {
                 const response = await fetch(backendURL + '/repairreports');
                 
                 // Convert the response into JSON format
-                const {repairreports} = await response.json();
+                const {repairreports, storepersonnel, bikes} = await response.json();
         
                 // Update the bikes state with the response data
                 setRepairReports(repairreports);
+                setStorePersonnel(storepersonnel);
+                setBikes(bikes);
                 
             } catch (error) {
               // If the API call fails, print the error to the console
@@ -49,11 +54,13 @@ function RepairReports({ backendURL }) {
 
                 <tbody>
                     {repairreports.map((repairreport, index) => (
-                        <TableRow key={index} rowObject={repairreport} backendURL={backendURL}/>  // removed refresh code
+                        <TableRow key={index} rowObject={repairreport} backendURL={backendURL} refreshRepairReports={getData}/>
                     ))}
 
                 </tbody>
             </table>
+
+            <CreateRepairReport storepersonnel={storepersonnel} bikes={bikes} backendURL={backendURL} refreshRepairReports={getData} />
         </>
     );
 
