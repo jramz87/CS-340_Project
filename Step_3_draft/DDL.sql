@@ -46,17 +46,19 @@ CREATE TABLE StorePersonnel (
   contactID INT NOT NULL,
   PRIMARY KEY (personnelID),
   FOREIGN KEY (contactID) REFERENCES Contacts (contactID)
+  ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------
 -- Table Customers
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Customers (
+CREATE TABLE Customers (
   customerID INT NOT NULL AUTO_INCREMENT,
   contactID INT NOT NULL,
   receiveNewsletter TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (customerID),
   FOREIGN KEY (contactID) REFERENCES Contacts (contactID)
+  ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------
@@ -72,6 +74,7 @@ CREATE TABLE RepairReports (
   PRIMARY KEY (repairID),
   FOREIGN KEY (bikeID) REFERENCES Bikes(bikeID),
   FOREIGN KEY (personnelID) REFERENCES StorePersonnel(personnelID)
+  ON DELETE CASCADE
 );
 
 -- -----------------------------------------------------
@@ -84,7 +87,8 @@ CREATE TABLE SalesReports (
   price DECIMAL(5,2) NOT NULL,
   customerID INT NOT NULL,
   PRIMARY KEY (salesID),
-  FOREIGN KEY (customerID) REFERENCES Customers (customerID),
+  FOREIGN KEY (customerID) REFERENCES Customers (customerID)
+  ON DELETE CASCADE,
   FOREIGN KEY (bikeID) REFERENCES Bikes (bikeID)
 );
 
