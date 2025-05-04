@@ -4,11 +4,16 @@
 
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
 import TableRow from '../components/TableRow';
+import CreateCustomerForm from '../components/CreateCustomerForm';
+import { VscAdd } from "react-icons/vsc";
+import Button from 'react-bootstrap/Button';
+import '../App.css';
 
 function Customers({ backendURL }) {
 
         // Set up a state variable `bikes` to store and display the backend response
         const [customers, setCustomers] = useState([]);
+        const [displayCreateForm, setDisplayCreateForm] = useState(false); 
 
         const getData = async function () {
             try {
@@ -33,6 +38,11 @@ function Customers({ backendURL }) {
             getData();
         }, []);
 
+        // Handler to close the create form
+        const handleCloseForm = () => {
+            setDisplayCreateForm(false);
+        };
+
     return (
         <>
             <h1>Customers Table</h1>
@@ -43,7 +53,7 @@ function Customers({ backendURL }) {
                         {customers.length > 0 && Object.keys(customers[0]).map((header, index) => (
                             <th key={index}>{header}</th>
                         ))}
-                        <th></th>
+                        <th> Edit / Delete</th>
                     </tr>
                 </thead>
 
@@ -54,6 +64,16 @@ function Customers({ backendURL }) {
 
                 </tbody>
             </table>
+
+            <div className="d-grid gap-2">
+                <Button variant="primary" size="lg" onClick={() => setDisplayCreateForm(!displayCreateForm)}>
+                    <VscAdd /> Add a Customer
+                </Button>
+            </div>
+
+            {displayCreateForm && (
+                <CreateCustomerForm customers={customers} backendURL={backendURL} refreshCustomers={getData} onClose={handleCloseForm}/>
+            )}
         </>
     );
 

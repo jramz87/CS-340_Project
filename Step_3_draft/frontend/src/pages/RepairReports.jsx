@@ -5,6 +5,9 @@
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
 import TableRow from '../components/TableRow';
 import CreateRepairReport from '../components/CreateRepairReport';
+import { VscAdd } from "react-icons/vsc";
+import Button from 'react-bootstrap/Button';
+import '../App.css';
 
 function RepairReports({ backendURL }) {
 
@@ -12,6 +15,7 @@ function RepairReports({ backendURL }) {
         const [repairreports, setRepairReports] = useState([]);
         const [storepersonnel, setStorePersonnel] = useState([]);
         const [bikes, setBikes] = useState([]);
+        const [displayCreateForm, setDisplayCreateForm] = useState(false); 
 
         const getData = async function () {
             try {
@@ -38,6 +42,11 @@ function RepairReports({ backendURL }) {
             getData();
         }, []);
 
+        // Handler to close the create form
+        const handleCloseForm = () => {
+            setDisplayCreateForm(false);
+        };
+
     return (
         <>
             <h1>Repair Reports Table</h1>
@@ -48,19 +57,27 @@ function RepairReports({ backendURL }) {
                         {repairreports.length > 0 && Object.keys(repairreports[0]).map((header, index) => (
                             <th key={index}>{header}</th>
                         ))}
-                        <th></th>
+                        <th> Edit / Delete </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {repairreports.map((repairreport, index) => (
-                        <TableRow key={index} rowObject={repairreport} backendURL={backendURL} refreshRepairReports={getData}/>
+                        <TableRow key={index} rowObject={repairreport}/>
                     ))}
 
                 </tbody>
             </table>
 
-            <CreateRepairReport storepersonnel={storepersonnel} bikes={bikes} backendURL={backendURL} refreshRepairReports={getData} />
+            <div className="d-grid gap-2">
+                <Button variant="primary" size="lg" onClick={() => setDisplayCreateForm(!displayCreateForm)}>
+                    <VscAdd /> Create a Repair Record
+                </Button>
+            </div>
+
+            {displayCreateForm && (
+                <CreateRepairReport storepersonnel={storepersonnel} bikes={bikes} backendURL={backendURL} refreshRepairReports={getData} onClose={handleCloseForm}/>
+            )}
         </>
     );
 

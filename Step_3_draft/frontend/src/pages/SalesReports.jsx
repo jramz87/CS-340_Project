@@ -4,11 +4,16 @@
 
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
 import TableRow from '../components/TableRow';
+import CreateSalesReport from '../components/CreateSalesReport';
+import { VscAdd } from "react-icons/vsc";
+import Button from 'react-bootstrap/Button';
+import '../App.css';
 
 function SalesReports({ backendURL }) {
 
         // Set up a state variable `bikes` to store and display the backend response
         const [salesreports, setSalesReports] = useState([]);
+        const [displayCreateForm, setDisplayCreateForm] = useState(false); 
 
         const getData = async function () {
             try {
@@ -33,6 +38,11 @@ function SalesReports({ backendURL }) {
             getData();
         }, []);
 
+        // Handler to close the create form
+        const handleCloseForm = () => {
+            setDisplayCreateForm(false);
+        };
+
     return (
         <>
             <h1>Sales Reports Table</h1>
@@ -54,6 +64,16 @@ function SalesReports({ backendURL }) {
 
                 </tbody>
             </table>
+
+            <div className="d-grid gap-2">
+                <Button variant="primary" size="lg" onClick={() => setDisplayCreateForm(!displayCreateForm)}>
+                    <VscAdd /> Create a Repair Record
+                </Button>
+            </div>
+
+            {displayCreateForm && (
+                <CreateSalesReport salesreports={salesreports} backendURL={backendURL} refreshSalesReports={getData} onClose={handleCloseForm}/>
+            )}
         </>
     );
 

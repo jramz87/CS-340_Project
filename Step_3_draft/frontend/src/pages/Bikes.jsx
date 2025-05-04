@@ -4,11 +4,16 @@
 
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
 import TableRow from '../components/TableRow';
+import CreateBikeForm from '../components/CreateBikeForm';
+import { VscAdd } from "react-icons/vsc";
+import Button from 'react-bootstrap/Button';
+import '../App.css';
 
 function Bikes({ backendURL }) {
 
         // Set up a state variable `bikes` to store and display the backend response
         const [bikes, setBikes] = useState([]);
+        const [displayCreateForm, setDisplayCreateForm] = useState(false); 
 
         const getData = async function () {
             try {
@@ -33,6 +38,11 @@ function Bikes({ backendURL }) {
             getData();
         }, []);
 
+        // Handler to close the create form
+        const handleCloseForm = () => {
+            setDisplayCreateForm(false);
+        };
+
     return (
         <>
             <h1>Bikes Table</h1>
@@ -43,7 +53,7 @@ function Bikes({ backendURL }) {
                         {bikes.length > 0 && Object.keys(bikes[0]).map((header, index) => (
                             <th key={index}>{header}</th>
                         ))}
-                        <th></th>
+                        <th> Edit / Delete </th>
                     </tr>
                 </thead>
 
@@ -54,6 +64,16 @@ function Bikes({ backendURL }) {
 
                 </tbody>
             </table>
+
+            <div className="d-grid gap-2">
+                <Button variant="primary" size="lg" onClick={() => setDisplayCreateForm(!displayCreateForm)}>
+                    <VscAdd /> Add a Bike
+                </Button>
+            </div>
+
+            {displayCreateForm && (
+                <CreateBikeForm bikes={bikes} backendURL={backendURL} refreshBikes={getData} onClose={handleCloseForm}/>
+            )}
         </>
     );
 

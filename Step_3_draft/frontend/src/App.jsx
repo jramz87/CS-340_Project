@@ -4,10 +4,10 @@
 
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Pages
 import Home from './pages/Home';
-import BSGPeople from './pages/BSGPeople';
 import Bikes from './pages/Bikes';
 import Contacts from './pages/Contacts';
 import Customers from './pages/Customers';
@@ -29,7 +29,6 @@ function App() {
             <Navigation />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/bsg-people" element={<BSGPeople backendURL={backendURL} />} />
                 <Route path="/bikes" element={<Bikes backendURL={backendURL} />} />
                 <Route path="/contacts" element={<Contacts backendURL={backendURL} />} />
                 <Route path="/customers" element={<Customers backendURL={backendURL} />} />

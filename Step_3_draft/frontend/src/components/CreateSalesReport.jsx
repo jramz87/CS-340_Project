@@ -5,7 +5,7 @@
 import { Form, Button, Container, CloseButton } from 'react-bootstrap';
 import '../App.css';
 
-const CreateRepairReport = ({ storepersonnel, bikes, backendURL, refreshRepairReports, onClose }) => {
+const CreateSalesReport = ({ salesreports, backendURL, refreshSalesReports, onClose }) => {
 
     // Clean up date formatting
     const formatDate = (dateString) => {
@@ -19,43 +19,29 @@ const CreateRepairReport = ({ storepersonnel, bikes, backendURL, refreshRepairRe
             <div className="form-container p-4 mb-4 border rounded bg-light">
                 
                 <div className="position-relative p-3 border-bottom">
-                    <h3 className="text-center m-0">Enter Repair Report Details</h3>
+                    <h3 className="text-center m-0">Enter Sales Report Details</h3>
                     <CloseButton onClick={onClose} className="position-absolute top-0 end-0 mt-3 me-3"/>
                 </div>
 
                 <Form>
-                    <Form.Group className="mb-3" controlId="create_rreport_personnel">
-                        <Form.Label>Person Making Report:</Form.Label>
-                        <Form.Select className="text-center">
-                            <option value="">   Select a Person</option>
-                            {storepersonnel.map((storepersonnel, index) => (
-                                <option value={storepersonnel.personnelID} key={index}>
-                                    {storepersonnel.firstName} {storepersonnel.lastName} ({storepersonnel.role})
-                                </option>
-                            ))}
-                        </Form.Select>
+                    <Form.Group className="mb-3" controlId="create_rreport_hours">
+                        <Form.Label>Bike Sold (ID):</Form.Label>
+                        <Form.Control type="number" className="text-center"/>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="create_rreport_date">
-                        <Form.Label>Date of Work:</Form.Label>
+                        <Form.Label>Date of Sale:</Form.Label>
                         <Form.Control type="date" className="text-center"/>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="create_rreport_hours">
-                        <Form.Label>Time Required (hours):</Form.Label>
+                        <Form.Label>Price:</Form.Label>
                         <Form.Control type="number" className="text-center"/>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="create_rreport_bikes">
-                        <Form.Label>Choose a Bike:</Form.Label>
-                        <Form.Select className="text-center">
-                            <option value="">Select a Bike</option>
-                            {bikes.map((bike, index) => (
-                                <option value={bike.bikeID} key={index}>
-                                    {bike.color}, {bike.style} (Received: {formatDate(bike.dateReceived)})
-                                </option>
-                            ))}
-                        </Form.Select>
+                    <Form.Group className="mb-3" controlId="create_rreport_hours">
+                        <Form.Label>Customer ID:</Form.Label>
+                        <Form.Control type="number" className="text-center"/>
                     </Form.Group>
 
                     <div className="d-grid gap-2">
@@ -70,4 +56,4 @@ const CreateRepairReport = ({ storepersonnel, bikes, backendURL, refreshRepairRe
     );
 };
 
-export default CreateRepairReport;
+export default CreateSalesReport;
