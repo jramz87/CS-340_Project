@@ -53,7 +53,7 @@ function StorePersonnel({ backendURL }) {
                         {storepersonnel.length > 0 && Object.keys(storepersonnel[0]).map((header, index) => (
                             <th key={index}>{header}</th>
                         ))}
-                        <th></th>
+                        <th> Edit / Delete</th>
                     </tr>
                 </thead>
 
