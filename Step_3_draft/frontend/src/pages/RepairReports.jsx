@@ -1,51 +1,75 @@
-// Citation for the code below (4/30/2025):
-// The code here was adapted from the the starter code provided in Module 6, Exploration "Web Application Technology" from:
-// https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
-
-import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
+import { useState, useEffect } from 'react';
 import TableRow from '../components/TableRow';
 import CreateRepairReport from '../components/CreateRepairReport';
+import UpdateRepairReport from '../components/UpdateRepairReport';
 import { VscAdd } from "react-icons/vsc";
 import Button from 'react-bootstrap/Button';
 import '../App.css';
 
 function RepairReports({ backendURL }) {
+    // State variables
+    const [repairreports, setRepairReports] = useState([]);
+    const [storepersonnel, setStorePersonnel] = useState([]);
+    const [bikes, setBikes] = useState([]);
+    const [displayCreateForm, setDisplayCreateForm] = useState(false);
+    const [editingReport, setEditingReport] = useState(null);
 
-        // Set up a state variable `bikes` to store and display the backend response
-        const [repairreports, setRepairReports] = useState([]);
-        const [storepersonnel, setStorePersonnel] = useState([]);
-        const [bikes, setBikes] = useState([]);
-        const [displayCreateForm, setDisplayCreateForm] = useState(false); 
-
-        const getData = async function () {
-            try {
-                // Make a GET request to the backend
-                const response = await fetch(backendURL + '/repairreports');
-                
-                // Convert the response into JSON format
-                const {repairreports, storepersonnel, bikes} = await response.json();
-        
-                // Update the bikes state with the response data
-                setRepairReports(repairreports);
-                setStorePersonnel(storepersonnel);
-                setBikes(bikes);
-                
-            } catch (error) {
-              // If the API call fails, print the error to the console
-              console.log(error);
-            }
+    const getData = async function () {
+        try {
+            // Make a GET request to the backend
+            const response = await fetch(backendURL + '/repairreports');
+            
+            // Convert the response into JSON format
+            const {repairreports, storepersonnel, bikes} = await response.json();
     
-        };
+            // Update the state with the response data
+            setRepairReports(repairreports);
+            setStorePersonnel(storepersonnel);
+            setBikes(bikes);
+            
+        } catch (error) {
+            // If the API call fails, print the error to the console
+            console.log(error);
+        }
+    };
 
-        // Load table on page load
-        useEffect(() => {
-            getData();
-        }, []);
+    // Load table on page load
+    useEffect(() => {
+        getData();
+    }, []);
 
-        // Handler to close the create form
-        const handleCloseForm = () => {
-            setDisplayCreateForm(false);
-        };
+    // Handler to close the create form
+    const handleCloseForm = () => {
+        setDisplayCreateForm(false);
+    };
+
+    // Handler for opening the edit form
+    const handleEdit = (report) => {
+        setEditingReport(report);
+    };
+
+    // Handler for closing the edit form
+    const handleCloseEditForm = () => {
+        setEditingReport(null);
+    };
+
+    // Handler for deleting a report
+    const handleDelete = async (reportId) => {
+        try {
+            const response = await fetch(`${backendURL}/repairreports/${reportId}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                // Refresh the data after deletion
+                getData();
+            } else {
+                console.error('Failed to delete repair report');
+            }
+        } catch (error) {
+            console.error('Error deleting repair report:', error);
+        }
+    };
 
     return (
         <>
@@ -63,9 +87,13 @@ function RepairReports({ backendURL }) {
 
                 <tbody>
                     {repairreports.map((repairreport, index) => (
-                        <TableRow key={index} rowObject={repairreport}/>
+                        <TableRow 
+                            key={index} 
+                            rowObject={repairreport}
+                            onEdit={handleEdit}
+                            onDelete={handleDelete}
+                        />
                     ))}
-
                 </tbody>
             </table>
 
@@ -76,11 +104,27 @@ function RepairReports({ backendURL }) {
             </div>
 
             {displayCreateForm && (
-                <CreateRepairReport storepersonnel={storepersonnel} bikes={bikes} backendURL={backendURL} refreshRepairReports={getData} onClose={handleCloseForm}/>
+                <CreateRepairReport 
+                    storepersonnel={storepersonnel} 
+                    bikes={bikes} 
+                    backendURL={backendURL} 
+                    refreshRepairReports={getData} 
+                    onClose={handleCloseForm}
+                />
+            )}
+
+            {editingReport && (
+                <UpdateRepairReport 
+                    report={editingReport}
+                    storepersonnel={storepersonnel} 
+                    bikes={bikes} 
+                    backendURL={backendURL} 
+                    refreshRepairReports={getData} 
+                    onClose={handleCloseEditForm}
+                />
             )}
         </>
     );
-
 }
 
 export default RepairReports;

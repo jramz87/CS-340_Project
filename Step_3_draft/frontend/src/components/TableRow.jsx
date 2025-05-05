@@ -10,15 +10,51 @@ import { VscEdit, VscTrash } from "react-icons/vsc";
 import '../App.css';
 
 const TableRow = ({ rowObject, onDelete, onEdit }) => {
+        // Handler for edit button click
+        const handleEdit = (e) => {
+            e.preventDefault();
+            if (onEdit) {
+                onEdit(rowObject);
+            }
+        };
+        
+        // Handler for delete button click
+        const handleDelete = (e) => {
+            e.preventDefault();
+            if (onDelete) {
+                if (window.confirm(`Are you sure you want to delete this repair report?`)) {
+                    onDelete(rowObject.id);
+                }
+            }
+        };
+
+            // Format date strings
+        const formatDate = (dateString) => {
+            if (!dateString) return '';
+            const date = new Date(dateString);
+            return date.toISOString().split('T')[0];
+        };
+    
+        // Format cell values based on their key
+        const formatCellValue = (key, value) => {
+            if (value === null || value === undefined) return '';
+            
+            // Check if the key contains 'date' in a case-insensitive way
+            if (key.toLowerCase().includes('date') && typeof value === 'string') {
+                return formatDate(value);
+            }
+            
+            return value;
+        };
     
     return (
         <tr>
-            {Object.values(rowObject).map((value, index) => (
-                <td key={index}>{value}</td>
+            {Object.entries(rowObject).map(([key, value], index) => (
+                <td key={index}>{formatCellValue(key, value)}</td>
             ))}
             <td>
-                <VscEdit className="edit-button" onClick={e => onEdit(rowObject)}/>
-                <VscTrash className="delete-button" onClick={e => onDelete(rowObject.id)}/>
+                <VscEdit className="edit-button" onClick={handleEdit}/>
+                <VscTrash className="delete-button" onClick={handleDelete}/>
             </td>
         </tr>
     );

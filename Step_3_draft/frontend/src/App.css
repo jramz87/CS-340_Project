@@ -140,8 +140,10 @@ a:hover {
   background-color: var(--color-navy);
   border-color: var(--color-navy);
   color: var(--color-white);
-  margin-bottom: 25px;
   transition: all 1s ease;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
 }
 
 .btn-secondary {
@@ -149,12 +151,16 @@ a:hover {
   border-color: var(--color-gray);
   color: var(--color-navy);
   transition: all 1s ease;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
 }
 
 .btn-secondary:hover {
   background-color: var(--color-gray);
   border-color: var(--color-navy);
   color: var(--color-navy);
+  box-shadow: 0 0 0 0.2rem rgba(252, 163, 17, 0.25);
 }
 
 .edit-button {
@@ -179,6 +185,13 @@ a:hover {
 
 .delete-button:hover {
   color: var(--color-orange);
+}
+
+/* Fix for form buttons specifically */
+.modal-footer .btn, 
+.form-footer .btn,
+.d-flex.justify-content-end .btn {
+  margin-bottom: 0;
 }
 
 /* Form Styling */
