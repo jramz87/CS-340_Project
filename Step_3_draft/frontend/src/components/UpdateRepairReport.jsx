@@ -76,14 +76,14 @@ function UpdateRepairReport({ report, storepersonnel, bikes, backendURL, refresh
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Staff</Form.Label>
+                        <Form.Label>Store Personnel</Form.Label>
                         <Form.Select
                             name="personnelID"
                             value={formData.personnelID || ''}
                             onChange={handleChange}
                             required
                         >
-                            <option value="">Select Staff</option>
+                            <option value="">Select Store Personnel</option>
                             {storepersonnel.map(staff => (
                                 <option key={staff.personnelID} value={staff.personnelID}>
                                     {staff.firstName} {staff.lastName} ({staff.role})

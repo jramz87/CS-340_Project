@@ -187,13 +187,6 @@ a:hover {
   color: var(--color-orange);
 }
 
-/* Fix for form buttons specifically */
-.modal-footer .btn, 
-.form-footer .btn,
-.d-flex.justify-content-end .btn {
-  margin-bottom: 0;
-}
-
 /* Form Styling */
 .form-container {
   background-color: var(--color-white);

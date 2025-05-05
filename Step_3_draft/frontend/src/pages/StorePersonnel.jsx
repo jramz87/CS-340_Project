@@ -4,16 +4,12 @@
 
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
 import TableRow from '../components/TableRow';
-import CreateStorePersonForm from '../components/CreateStorePersonForm';
-import { VscAdd } from "react-icons/vsc";
-import Button from 'react-bootstrap/Button';
 import '../App.css';
 
 function StorePersonnel({ backendURL }) {
 
         // Set up a state variable `bikes` to store and display the backend response
         const [storepersonnel, setStorePersonnel] = useState([]);
-        const [displayCreateForm, setDisplayCreateForm] = useState(false); 
 
         const getData = async function () {
             try {
@@ -38,11 +34,6 @@ function StorePersonnel({ backendURL }) {
             getData();
         }, []);
 
-        // Handler to close the create form
-        const handleCloseForm = () => {
-            setDisplayCreateForm(false);
-        };
-
     return (
         <>
             <h1>Store Personnel Table</h1>
@@ -53,27 +44,16 @@ function StorePersonnel({ backendURL }) {
                         {storepersonnel.length > 0 && Object.keys(storepersonnel[0]).map((header, index) => (
                             <th key={index}>{header}</th>
                         ))}
-                        <th> Edit / Delete</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {storepersonnel.map((storeperson, index) => (
-                        <TableRow key={index} rowObject={storeperson} backendURL={backendURL}/>  // removed refresh code
+                        <TableRow rowObject={storeperson} showEditDelete={false}/>  // removed refresh code
                     ))}
 
                 </tbody>
             </table>
-
-            <div className="d-grid gap-2">
-                <Button variant="primary" size="lg" onClick={() => setDisplayCreateForm(!displayCreateForm)}>
-                    <VscAdd /> Add a Store Person
-                </Button>
-            </div>
-
-            {displayCreateForm && (
-                <CreateStorePersonForm storepersonnel={storepersonnel} backendURL={backendURL} refreshStorePersonnel={getData} onClose={handleCloseForm}/>
-            )}
         </>
     );
 

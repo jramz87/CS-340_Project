@@ -9,7 +9,7 @@
 import { VscEdit, VscTrash } from "react-icons/vsc";
 import '../App.css';
 
-const TableRow = ({ rowObject, onDelete, onEdit }) => {
+const TableRow = ({ rowObject, onDelete, onEdit, showEditDelete = false}) => {
         // Handler for edit button click
         const handleEdit = (e) => {
             e.preventDefault();
@@ -22,7 +22,7 @@ const TableRow = ({ rowObject, onDelete, onEdit }) => {
         const handleDelete = (e) => {
             e.preventDefault();
             if (onDelete) {
-                if (window.confirm(`Are you sure you want to delete this repair report?`)) {
+                if (window.confirm(`Are you sure you want to delete this record?`)) {
                     onDelete(rowObject.id);
                 }
             }
@@ -52,10 +52,14 @@ const TableRow = ({ rowObject, onDelete, onEdit }) => {
             {Object.entries(rowObject).map(([key, value], index) => (
                 <td key={index}>{formatCellValue(key, value)}</td>
             ))}
-            <td>
-                <VscEdit className="edit-button" onClick={handleEdit}/>
-                <VscTrash className="delete-button" onClick={handleDelete}/>
-            </td>
+            {showEditDelete ? (
+                <td>
+                    <VscEdit className="edit-button" onClick={handleEdit}/>
+                    <VscTrash className="delete-button" onClick={handleDelete}/>
+                </td>
+            ) : (
+                <td></td>
+            )}
         </tr>
     );
 };

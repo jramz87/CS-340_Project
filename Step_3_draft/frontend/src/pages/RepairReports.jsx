@@ -87,11 +87,11 @@ function RepairReports({ backendURL }) {
 
                 <tbody>
                     {repairreports.map((repairreport, index) => (
-                        <TableRow 
-                            key={index} 
+                        <TableRow  
                             rowObject={repairreport}
                             onEdit={handleEdit}
                             onDelete={handleDelete}
+                            showEditDelete={true}
                         />
                     ))}
                 </tbody>
