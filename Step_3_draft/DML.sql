@@ -9,6 +9,18 @@
 INSERT INTO RepairReports (personnelID, bikeID, dateRepaired, hoursSpent, description) 
 VALUES (:personnelID_from_storepersonnel_dropdown, :bikeID_from_bikes_dropdown, :dateRepaired, :hoursSpent, :descriptionInput);
 
+INSERT INTO RepairReports (personnelID, bikeID, dateRepaired, hoursSpent, description)
+VALUES (
+  (SELECT personnelID FROM StorePersonnel 
+    JOIN Contacts ON StorePersonnel.contactID = Contacts.contactID
+    WHERE CONCAT(Contacts.firstName, ' ', Contacts.lastName) = :fullName),
+  (SELECT bikeID FROM Bikes 
+    WHERE CONCAT(Bikes.color, ' ', Bikes.style, ' (Received: ', Bikes.dateReceived, ')') = :bikeDescription) 
+  :dateRepaired,
+  :hoursSpent,
+  :descriptionInput
+);
+
 -- -----------------------------------------------------
 -- Read Operations
 -- -----------------------------------------------------

@@ -166,7 +166,6 @@ VALUES
 
 INSERT INTO Contacts 
 (
-    contactID, 
     firstName, 
     lastName, 
     phone, 
@@ -174,63 +173,54 @@ INSERT INTO Contacts
 ) 
 VALUES 
 (
-    1, 
     'Klaus', 
     'Von Hellman', 
     '305-278-2483', 
     'klausv@oaklaura-bikes.com'
 ),
 (
-    2, 
     'Hilary', 
     'Smith', 
     '462-384-2333', 
     'hilarys@oaklaura-bikes.com'
 ),
 (
-    3, 
     'Jennifer', 
     'Valdez', 
     '305-989-3455', 
     'jenval@hotmail.com'
 ),
 (
-    4, 
     'Joe', 
     'Wright', 
     '303-258-2333', 
     'justjoe@gmail.com'
 ),
 (
-    5, 
     'Damian', 
     'Malloy', 
     '416-222-8888', 
     'dammal@hotmail.com'
 ),
 (
-    6, 
     'Tabitha', 
     'Chen', 
     '233-377-8883', 
     'tchen@gmail.com'
 ),
 (
-    7, 
     'Tom', 
     'Truss', 
     '495-333-2345', 
     'tom@aol.com'
 ),
 (
-    8, 
     'Adea', 
     'Remmington', 
     '303-646-9288', 
     'adea@biscuits.com'
 ),
 (  
-    9, 
     'Joe', 
     'Johnson', 
     '453-197-4228', 
@@ -246,23 +236,23 @@ INSERT INTO StorePersonnel
 )
 VALUES
 (
-    1,
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Klaus Von Hellman'),
     'Employee'
 ),
 (
-    2,
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Hilary Smith'),
     'Employee'
 ),
 (
-    4,
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Joe Wright'),
     'Volunteer'
 ),
 (
-    5, 
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Damian Malloy'), 
     'Volunteer'
 ),
 (
-    6,
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Tabitha Chen'),
     'Volunteer'
 );
 
@@ -275,19 +265,19 @@ INSERT INTO Customers
 )
 VALUES
 (
-    3, 
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Jennifer Valdez'), 
     0
 ),
 (
-    4,
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Joe Wright'),
     1
 ),
 (
-    7,
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Tom Truss'),
     1
 ),
 (
-    8,
+    (SELECT contactID FROM Contacts WHERE CONCAT(firstName, ' ', lastName) = 'Adea Remmington'),
     0
 );
 
@@ -303,57 +293,95 @@ INSERT INTO RepairReports
 )
 VALUES
 (
-    3,
-    1,
+    (SELECT personnelID 
+        FROM StorePersonnel JOIN Contacts 
+        ON StorePersonnel.contactID = Contacts.contactID 
+        WHERE CONCAT(firstName, ' ', lastName) = 'Joe Wright'),
+    (SELECT bikeID
+    FROM Bikes
+    WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Pink Santa Cruz Mountain (2024-08-15)'),
     '2024-08-30',
     3,
     'flushed brakes, replaced chain and cleaned'
 ),
 (
-    1,
-    1,
+    (SELECT personnelID 
+        FROM StorePersonnel JOIN Contacts 
+        ON StorePersonnel.contactID = Contacts.contactID 
+        WHERE CONCAT(firstName, ' ', lastName) = 'Klaus Von Hellman'),
+    (SELECT bikeID
+    FROM Bikes
+    WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Pink Santa Cruz Mountain (2024-08-15)'),
     '2024-09-02',
     0.5,
     'Employee review, bike approved for sale'
 ),
 (
-    5, 
+    (SELECT personnelID 
+        FROM StorePersonnel JOIN Contacts 
+        ON StorePersonnel.contactID = Contacts.contactID 
+        WHERE CONCAT(firstName, ' ', lastName) = 'Tabitha Chen'), 
     NULL, 
     '2024-10-01', 
     5, 
     'patched damaged inner tubes (q=12)'
 ),
 (
-    2, 
-    2, 
+    (SELECT personnelID 
+        FROM StorePersonnel JOIN Contacts 
+        ON StorePersonnel.contactID = Contacts.contactID 
+        WHERE CONCAT(firstName, ' ', lastName) = 'Hilary Smith'), 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Red Cannondale Road (2024-12-20)'), 
     '2025-01-03', 
     3, 
     'Replaced pedals and performed employee review: approved for sale'
 ),
 (
-    1, 
-    4, 
+    (SELECT personnelID 
+        FROM StorePersonnel JOIN Contacts 
+        ON StorePersonnel.contactID = Contacts.contactID 
+        WHERE CONCAT(firstName, ' ', lastName) = 'Klaus Von Hellman') , 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Green Trek Cruiser (2025-02-10)'), 
     '2025-02-15', 
     0.5, 
     'Bike received in good condition, cleaned and reviewed: approved for sale'
 ),
 (
-    3, 
-    3, 
+    (SELECT personnelID 
+        FROM StorePersonnel JOIN Contacts 
+        ON StorePersonnel.contactID = Contacts.contactID 
+        WHERE CONCAT(firstName, ' ', lastName) = 'Joe Wright') , 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Black Aventon Electric (2025-02-03)'), 
     '2025-02-15', 
     2, 
     'retuned derailluer and cleaned, ready for review'
 ),
 (
-    1, 
-    5, 
+    (SELECT personnelID 
+        FROM StorePersonnel JOIN Contacts 
+        ON StorePersonnel.contactID = Contacts.contactID 
+        WHERE CONCAT(firstName, ' ', lastName) = 'Klaus Von Hellman') , 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Red Crew Enduro (2025-02-15)'), 
     '2025-02-16', 
     0.25, 
     'Bike received new: approved for sale'
 ),
 (
-    2, 
-    7, 
+    (SELECT personnelID 
+        FROM StorePersonnel JOIN Contacts 
+        ON StorePersonnel.contactID = Contacts.contactID 
+        WHERE CONCAT(firstName, ' ', lastName) = 'Hilary Smith') , 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'White Specialized Hybrid (2025-03-01)'), 
     '2025-03-01', 
     0.25, 
     'bike arrived new, approved for sale'
@@ -370,26 +398,46 @@ INSERT INTO SalesReports
 )
 VALUES
 (
-    5, 
-    1, 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Red Crew Enduro (2025-02-15)'), 
+    (SELECT customerID
+        FROM Customers JOIN Contacts 
+        ON Customer.customerID = Contacts.customerID
+        WHERE CONCAT(firstName, ' ', lastName) = 'Jennifer Valdez'),
     '2025-02-22', 
     459
 ),
 (
-    4, 
-    1, 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Green Trek Cruiser (2025-02-10)'),  
+    (SELECT customerID
+        FROM Customers JOIN Contacts 
+        ON Customer.customerID = Contacts.customerID
+        WHERE CONCAT(firstName, ' ', lastName) = 'Jennifer Valdez'),
     '2025-02-22', 
     999.97
 ),
 (
-    1, 
-    2, 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Pink Santa Cruz Mountain (2024-08-15)'), 
+    (SELECT customerID
+        FROM Customers JOIN Contacts 
+        ON Customer.customerID = Contacts.customerID
+        WHERE CONCAT(firstName, ' ', lastName) = 'Joe Wright'),
     '2025-03-02', 
     3299.99
 ),
 (
-    7, 
-    4, 
+    (SELECT bikeID
+        FROM Bikes
+        WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')') = 'White Specialized Hybrid (2025-03-01)'), 
+    (SELECT customerID
+        FROM Customers JOIN Contacts 
+        ON Customer.customerID = Contacts.customerID
+        WHERE CONCAT(firstName, ' ', lastName) = 'Adea Remmington'),
     '2025-03-15', 
     649
 );
