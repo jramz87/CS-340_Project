@@ -32,6 +32,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }
 
+.homepage h1 {
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(20, 33, 61, 0.3);
+  color: var(--color-navy);
+  margin-bottom: 1.5rem;
+}
+
+.homepage h3 {
+  text-align: center;
+}
+
 a {
   color: var(--color-navy);
   text-decoration: none;
