@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  5 MAY 2025 22:35
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  6 MAY 2025 20:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -827,11 +827,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
 [5]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 368.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 368.
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -841,6 +836,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
 [6]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 442.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 442.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -886,6 +886,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
 [11]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 20.39996pt, for example:
+(fancyhdr)                \setlength{\headheight}{20.39996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
+
+[12]
 File: ERD.png Graphic file (type bmp)
 <ERD.png>
 File: Schema.png Graphic file (type bmp)
@@ -899,7 +908,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
-[12]
+[13]
 File: Bikes.png Graphic file (type bmp)
 <Bikes.png>
 File: StorePersonnel.png Graphic file (type bmp)
@@ -913,7 +922,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
-[13]
+[14]
 File: Customers.png Graphic file (type bmp)
 <Customers.png>
 File: RepairReports.png Graphic file (type bmp)
@@ -931,7 +940,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
-[14]
+[15]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -940,28 +949,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
-[15] (./ProjectStep_3_final.aux)
+[16] (./ProjectStep_3_final.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-Package rerunfilecheck Warning: File `ProjectStep_3_final.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ProjectStep_3_final.out':
-(rerunfilecheck)             Before: E4C96783E4A3BA53C821CAAE5489CAA1;1429
-(rerunfilecheck)             After:  F29E8228F28B4D7F7A7AC7F19955B34F;1439.
+Package rerunfilecheck Info: File `ProjectStep_3_final.out' has not changed.
+(rerunfilecheck)             Checksum: F29E8228F28B4D7F7A7AC7F19955B34F;1439.
  ) 
 Here is how much of TeX's memory you used:
- 24807 strings out of 473832
- 524192 string characters out of 5729482
- 952274 words of memory out of 5000000
- 47519 multiletter control sequences out of 15000+600000
+ 24806 strings out of 473832
+ 524156 string characters out of 5729482
+ 952284 words of memory out of 5000000
+ 47518 multiletter control sequences out of 15000+600000
  559285 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,11n,101p,1323b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ProjectStep_3_final.pdf (15 pages).
+Output written on ProjectStep_3_final.pdf (16 pages).

@@ -403,7 +403,7 @@ VALUES
         WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Red Crew Enduro (2025-02-15)'), 
     (SELECT customerID
         FROM Customers JOIN Contacts 
-        ON Customer.customerID = Contacts.customerID
+        ON Customers.contactID = Contacts.contactID
         WHERE CONCAT(firstName, ' ', lastName) = 'Jennifer Valdez'),
     '2025-02-22', 
     459
@@ -414,7 +414,7 @@ VALUES
         WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Green Trek Cruiser (2025-02-10)'),  
     (SELECT customerID
         FROM Customers JOIN Contacts 
-        ON Customer.customerID = Contacts.customerID
+        ON Customers.contactID = Contacts.contactID
         WHERE CONCAT(firstName, ' ', lastName) = 'Jennifer Valdez'),
     '2025-02-22', 
     999.97
@@ -425,7 +425,7 @@ VALUES
         WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')' ) = 'Pink Santa Cruz Mountain (2024-08-15)'), 
     (SELECT customerID
         FROM Customers JOIN Contacts 
-        ON Customer.customerID = Contacts.customerID
+        ON Customers.contactID = Contacts.contactID
         WHERE CONCAT(firstName, ' ', lastName) = 'Joe Wright'),
     '2025-03-02', 
     3299.99
@@ -436,7 +436,7 @@ VALUES
         WHERE CONCAT(color, ' ', brand, ' ', style, ' (', dateReceived, ')') = 'White Specialized Hybrid (2025-03-01)'), 
     (SELECT customerID
         FROM Customers JOIN Contacts 
-        ON Customer.customerID = Contacts.customerID
+        ON Customers.contactID = Contacts.contactID
         WHERE CONCAT(firstName, ' ', lastName) = 'Adea Remmington'),
     '2025-03-15', 
     649

@@ -67,67 +67,67 @@ Something to note: In future steps, we will check to make sure you use subquerie
 \begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, title=\textbf{Step 2: Peer Review 1 - Joseph Gilmore}]
 ``\textit{Does the schema present a physical model that follows the database outline and the ER logical diagram exactly?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, the schema acts as a more detailed and implemented version of the ERD. All keys and naming match between the two.
 
 \vspace{0.2cm}
 \textit{Is there consistency in a) naming between overview, outline, ER and schema entity/attributes b) entities plural, attributes singular c) use of capitalization for naming?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Both the ERD and Schema are properly set up with all of naming being uniform (plural entities and singular attributes, capitalized naming of entities and lowercase attributes).
 
 \vspace{0.2cm}
 \textit{Is the schema easy to read (e.g. diagram is clear and readable with relationship lines not crossed)?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, the schema is very easy to read and understand.
 
 \vspace{0.2cm}
 \textit{Are intersection tables properly formed (e.g. two FKs and facilitate a M:N relationship)?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, intersection tables (and optional relationships) are properly formed. The foreign keys in these intersection tables are also clearly and uniformly created.
 
 \vspace{0.2cm}
 \textit{Does the sample data suggest any non-normalized issues, e.g. partial dependencies or transitive dependencies?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 No, it does not appear that there are any abnormalities. All of the sample data covers each entity and attribute and inserted data appears to properly reference keys (both foreign and primary).
 
 \vspace{0.2cm}
 \textit{s the SQL file syntactically correct? This can be easily verified by using PhPMyAdmin and your CS 340 database (do not forget to take backup of your own database before you do this!)}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, I was able to load this into a database and test it. All of the table creations along with data insertions are working.
 
 \vspace{0.2cm}
 \textit{In the SQL, are the data types appropriate considering the description of the attribute in the database outline?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, all data is in accordance with the specified data types. This group chose to use a lot of ENUM's which seems to be a great decision as there are certain categories that will be very consistent. For example, they status attribute in the Bikes table only allows for the following: `In Repair', `In Review', `For Sale', `Sold'. This will help keep the database clean of duplicated data.
 
 \vspace{0.2cm}
 \textit{In the SQL, are the primary and foreign keys correctly defined when compared to the Schema? Are appropriate CASCADE operations declared?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, all primary and foreign keys are declared in the SQL file and match that of the schema. Each table has a corresponding CASCADE operation. 
 
 \vspace{0.2cm}
 \textit{In the SQL, are relationship tables present when compared to the ERD/Schema?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, relationship tables exist in the SQL similar to that of the schema. Specifically, this would be the SalesReport table as it utilizes foreign keys from both the Customers and Bikes table.
 
 \vspace{0.2cm}
 \textit{In the SQL, is all example data shown in the PDF INSERTED?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, all of the data in the screenshots is also inserted in the DDL.sql file.
 
 \vspace{0.2cm}
 \textit{Is the SQL well-structured and commented (e.g. hand authored) or not (e.g. exported from MySQL)?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, all of the data is hand authored, well structured and commented. All of the sections are divided in to clean sections with similar data.
  
 \vspace{0.2cm}
@@ -141,71 +141,145 @@ All of the above work is my own; no AI has been used."
 \begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, title=\textbf{Step 2: Peer Review 2 - Daniel Guardado}]
 ``\textit{Does the schema present a physical model that follows the database outline and the ER logical diagram exactly?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, the schema follows the database outline and ER logical diagram. The schema clearly depicts all tables, attributes, and datatypes as shown in the outline.  
 
 \vspace{0.2cm}
 \textit{Is there consistency in a) naming between overview, outline, ER and schema entity/attributes b) entities plural, attributes singular c) use of capitalization for naming?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Naming is almost consistent. Entity table names are capitalized, follow pascal case, and are plural. Attributes use camel case and are singular. Two attributes that could be changed would be bikes\_bikeID and customers\_customerID as they follow snake case. 
 
 \vspace{0.2cm}
 \textit{Is the schema easy to read (e.g. diagram is clear and readable with relationship lines not crossed)?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 The schema is easy to read as relationship lines are not interfering with others. Everything is readable. 
 
 \vspace{0.2cm}
 \textit{Are intersection tables properly formed (e.g. two FKs and facilitate a M:N relationship)?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, the intersection tables are properly formed, showing a primary key and two foreign keys with proper relationship notations used. 
 
 \vspace{0.2cm}
 \textit{Does the sample data suggest any non-normalized issues, e.g. partial dependencies or transitive dependencies?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 No non-normalized issues appear. No composite keys are used, and no non-prime attributes seem to depend on one another. 
 
 \vspace{0.2cm}
-\textit{s the SQL file syntactically correct? This can be easily verified by using PhPMyAdmin and your CS 340 database (do not forget to take backup of your own database before you do this!)}
+\textit{Is the SQL file syntactically correct? This can be easily verified by using PhPMyAdmin and your CS 340 database (do not forget to take backup of your own database before you do this!)}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 The SQL file is syntactically correct as no issues occur when trying to import to phpMyAdmin. 
 
 \vspace{0.2cm}
 \textit{In the SQL, are the data types appropriate considering the description of the attribute in the database outline?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, the data types are appropriate for the attributes described in the outline. 
 
 \vspace{0.2cm}
 \textit{In the SQL, are the primary and foreign keys correctly defined when compared to the Schema? Are appropriate CASCADE operations declared?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, primary and foreign keys are used correctly in the schema and outline. Cascade operations are declared correctly for foreign keys used in intersection tables or other master tables. 
 
 \vspace{0.2cm}
 \textit{In the SQL, are relationship tables present when compared to the ERD/Schema?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, 1:1, 1:M, and M:M relationships are presented correctly in the Schema and EDR. 
 
 \vspace{0.2cm}
 \textit{In the SQL, is all example data shown in the PDF INSERTED?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, all example data shown in the pdf was also present in the SQL file. 
 
 \vspace{0.2cm}
 \textit{Is the SQL well-structured and commented (e.g. hand authored) or not (e.g. exported from MySQL)?}
 
-\vspace{0.2cm}
+\vspace{0.05cm}
 Yes, the DDL.sql file is well documented showing comments about the authors, the tables, and the example data. 
  
 \vspace{0.2cm}
 All my work."
+
+\vspace{0.2cm}
+\end{tcolorbox}
+
+\vspace{0.5cm}
+%%%%%%%%%%%%%%%%.                   Step #2:  REVIEW 4.                       %%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, title=\textbf{Step 2: Peer Review 3 - Tyler Grzymalski}]
+``\textit{Does the schema present a physical model that follows the database outline and the ER logical diagram exactly?}
+
+\vspace{0.05cm}
+Yes.  
+
+\vspace{0.2cm}
+\textit{Is there consistency in a) naming between overview, outline, ER and schema entity/attributes b) entities plural, attributes singular c) use of capitalization for naming?}
+
+\vspace{0.05cm}
+There is a consistency in naming throughout the project. Entities and attributes are plural and singular. Capitalization is used appropriately.
+
+\vspace{0.2cm}
+\textit{Is the schema easy to read (e.g. diagram is clear and readable with relationship lines not crossed)?}
+
+\vspace{0.05cm}
+The schema is very well done, it is formatted perfectly.
+
+\vspace{0.2cm}
+\textit{Are intersection tables properly formed (e.g. two FKs and facilitate a M:N relationship)?}
+
+\vspace{0.05cm}
+The intersection tables that are used are used properly. 
+
+\vspace{0.2cm}
+\textit{Does the sample data suggest any non-normalized issues, e.g. partial dependencies or transitive dependencies?}
+
+\vspace{0.05cm}
+I cannot find any issues regarding normalization. 
+
+\vspace{0.2cm}
+\textit{Is the SQL file syntactically correct? This can be easily verified by using PhPMyAdmin and your CS 340 database (do not forget to take backup of your own database before you do this!)}
+
+\vspace{0.05cm}
+The SQL file is proper. It ran without issues for me.
+
+\vspace{0.2cm}
+\textit{In the SQL, are the data types appropriate considering the description of the attribute in the database outline?}
+
+\vspace{0.05cm}
+Looking through the attributes, there are no instances where I would suggest changing the data type.
+
+\vspace{0.2cm}
+\textit{In the SQL, are the primary and foreign keys correctly defined when compared to the Schema? Are appropriate CASCADE operations declared?}
+
+\vspace{0.05cm}
+Every PK and FK is defined appropriately based on the Schema. CASCADE operations are correctly utilized.
+
+\vspace{0.2cm}
+\textit{In the SQL, are relationship tables present when compared to the ERD/Schema?}
+
+\vspace{0.05cm}
+Relationship tables are defined as they should be when compared to the ERD. 
+
+\vspace{0.2cm}
+\textit{In the SQL, is all example data shown in the PDF INSERTED?}
+
+\vspace{0.05cm}
+ALl data used in the SQL is used in the PDF.
+
+\vspace{0.2cm}
+\textit{Is the SQL well-structured and commented (e.g. hand authored) or not (e.g. exported from MySQL)?}
+
+\vspace{0.05cm}
+The structure of the SQL is perfect, comments allow the reader to skim quickly and understand what is happening.
+ 
+\vspace{0.2cm}
+This review is all my own work."
 
 \vspace{0.2cm}
 \end{tcolorbox}
@@ -365,6 +439,7 @@ This review is entirely original, and AI was not used in any capacity to write i
 Based on external feedback we received on Project Step 2 Draft, the following actions were taken:
 \vspace{0.2cm}
 \begin{itemize}
+  \item \textbf{Suggestion from ML:} As suggested, in our DDL.sql file we replaced all hardcoded foreign keys within INSERT statements with subqueries.
   \item \textbf{Suggestion from DG:} To be consistent in our naming we updated the FKs bikes\_bikesID to bikesID and customer\_customerID to customerID.
  \end{itemize}
 \vspace{0.2cm}

@@ -6,9 +6,6 @@
 -- Create Operations
 -- -----------------------------------------------------
 -- add a new RepairReport (repairID will be auto-generated)
-INSERT INTO RepairReports (personnelID, bikeID, dateRepaired, hoursSpent, description) 
-VALUES (:personnelID_from_storepersonnel_dropdown, :bikeID_from_bikes_dropdown, :dateRepaired, :hoursSpent, :descriptionInput);
-
 INSERT INTO RepairReports (personnelID, bikeID, dateRepaired, hoursSpent, description)
 VALUES (
   (SELECT personnelID FROM StorePersonnel 
@@ -20,6 +17,10 @@ VALUES (
   :hoursSpent,
   :descriptionInput
 );
+
+-- add a new Contact (contactID will be auto-generated); hardcoded insert version
+INSERT INTO Contacts (firstName, lastName, phone, email)
+VALUES (:firstNameInput, :lastNameInput, :phoneInput, :emailInput);
 
 -- -----------------------------------------------------
 -- Read Operations
