@@ -8,11 +8,15 @@
 -- add a new RepairReport (repairID will be auto-generated)
 INSERT INTO RepairReports (personnelID, bikeID, dateRepaired, hoursSpent, description)
 VALUES (
-  (SELECT personnelID FROM StorePersonnel 
+  (
+    SELECT personnelID FROM StorePersonnel 
     JOIN Contacts ON StorePersonnel.contactID = Contacts.contactID
-    WHERE CONCAT(Contacts.firstName, ' ', Contacts.lastName) = :fullName),
-  (SELECT bikeID FROM Bikes 
-    WHERE CONCAT(Bikes.color, ' ', Bikes.style, ' (Received: ', Bikes.dateReceived, ')') = :bikeDescription) 
+    WHERE CONCAT(Contacts.firstName, ' ', Contacts.lastName) = :fullName
+  ),
+  (
+    SELECT bikeID FROM Bikes 
+    WHERE CONCAT(Bikes.color, ' ', Bikes.style, ' (Received: ', Bikes.dateReceived, ')') = :bikeDescription
+  ), 
   :dateRepaired,
   :hoursSpent,
   :descriptionInput
