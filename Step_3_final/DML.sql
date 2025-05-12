@@ -30,22 +30,45 @@ VALUES (:firstNameInput, :lastNameInput, :phoneInput, :emailInput);
 -- Read Operations
 -- -----------------------------------------------------
 -- get all attributes and records in Bikes entity
-SELECT * FROM Bikes;
+SELECT bikeID AS "Bike ID", color AS Color, style AS Style, brand AS Brand, status AS Status, dateReceived AS "Date Received" FROM Bikes;
 
 -- get all attributes and records in Contacts entity
-SELECT * FROM Contacts;
+SELECT contactID AS "Contact ID", firstName AS "First Name", lastName AS "Last Name", phone AS Phone, email AS Email FROM Contacts;
 
 -- get all attributes and records in Customers entity
-SELECT * FROM Customers;
+SELECT Customers.customerID AS "Customer ID", Customers.contactID AS "Contact ID", 
+  Contacts.firstName AS "First Name", Contacts.lastName AS "Last Name",
+  CASE 
+    WHEN Customers.receiveNewsletter = 1 THEN "Yes" 
+    ELSE "No"
+  END AS "Receive Newsletter?" 
+FROM Customers
+INNER JOIN Contacts ON Contacts.contactID = Customers.contactID;
 
 -- get all attributes and records in RepairReports entity
-SELECT * FROM RepairReports;
+SELECT RepairReports.repairID AS "Repair ID", Contacts.firstName AS "First Name",
+  Contacts.lastName AS "Last Name", RepairReports.dateRepaired AS "Repair Date",
+  RepairReports.hoursSpent AS "Hours", RepairReports.bikeID AS "Bike Repaired",
+  RepairReports.description AS "Description"
+FROM RepairReports
+INNER JOIN StorePersonnel ON StorePersonnel.personnelID = RepairReports.personnelID
+INNER JOIN Contacts ON Contacts.contactID = StorePersonnel.contactID;
 
 -- get all attributes and records in SalesReports entity
-SELECT * FROM SalesReports;
+SELECT SalesReports.salesID AS "Sales ID", SalesReports.bikeID AS "Bike ID", 
+  SalesReports.dateSold AS "Date Sold", SalesReports.price AS "price",
+  SalesReports.customerID AS "Customer ID", Contacts.firstName AS "First Name",
+  Contacts.lastName AS "Last Name"
+FROM SalesReports
+INNER JOIN Customers ON Customers.customerID = SalesReports.customerID
+INNER JOIN Contacts ON Contacts.contactID = Customers.contactID;
 
 -- get all attributes and records in StorePersonnel entity
-SELECT * FROM StorePersonnel;
+SELECT StorePersonnel.personnelID AS "Personnel ID",
+  StorePersonnel.role AS "Role", StorePersonnel.contactID AS "Contact ID",
+  Contacts.firstName AS "First Name", Contacts.lastName AS "Last Name" 
+FROM StorePersonnel
+INNER JOIN Contacts ON Contacts.contactID = StorePersonnel.contactID;
 
 -- get all StorePersonnel IDs and Names to populate the SelectAPerson dropdown in RepairReports Update
 SELECT StorePersonnel.personnelID, StorePersonnel.role, Contacts.firstName, Contacts.lastName
@@ -64,6 +87,11 @@ ORDER BY RepairReports.repairID;
 SELECT Bikes.bikeID, Bikes.color, Bikes.style, Bikes.dateReceived 
 FROM Bikes
 WHERE Bikes.status = 'In Repair' OR Bikes.status = 'In Review'
+ORDER BY Bikes.bikeID;
+
+-- get all Bike IDs, style, color and dates to populate the SelectABike dropdown in RepairReports Create
+SELECT Bikes.bikeID, Bikes.color, Bikes.style, Bikes.dateReceived 
+FROM Bikes
 ORDER BY Bikes.bikeID;
 
 -- -----------------------------------------------------
