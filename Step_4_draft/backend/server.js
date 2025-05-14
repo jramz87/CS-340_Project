@@ -23,6 +23,22 @@ const PORT = 6396;
 // ########################################
 // ########## ROUTE HANDLERS
 
+// RESET ROUTE
+
+app.post('/reset-db', async (req, res) => {
+    try {
+        // Call the stored procedure that resets the database
+        const query = 'CALL sp_load_bikesdb();';
+        await db.query(query);
+
+        res.status(200).json({ message: "Database successfully reset to base state." });
+
+    } catch (error) {
+        console.error("Error executing reset procedure:", error);
+        res.status(500).send("An error occurred while resetting the database.");
+    }
+});
+
 // READ ROUTES
 
 app.get('/bikes', async (req, res) => {

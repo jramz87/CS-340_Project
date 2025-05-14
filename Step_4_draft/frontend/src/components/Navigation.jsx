@@ -6,6 +6,7 @@
 // The code used for the Navbar was based on a freely available React Bootstrap component:
 // https://react-bootstrap.netlify.app/docs/components/navs
 import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button'
 import { Link, useLocation } from 'react-router-dom';
 import '../App.css';
 
@@ -14,6 +15,24 @@ function Navigation() {
     const activepage = useLocation();
     const currentPath = activepage.pathname;
 
+    const handleReset = async () => {
+        try {
+            const response = await fetch('http://classwork.engr.oregonstate.edu:6396/reset-db', {
+                method: 'POST',
+            });
+
+            if (response.ok) {
+                alert('Database reset successfully!');
+                window.location.reload(); // Refresh page or trigger a refetch
+            } else {
+                alert('Reset failed.');
+            }
+        } catch (err) {
+            console.error('Error resetting database:', err);
+            alert('Error connecting to the backend.');
+        }
+    };
+    
     return (
         <>
         <div className="logo-banner bg-navy text-white text-center py-3 mb-0">
@@ -43,6 +62,10 @@ function Navigation() {
                 <Nav.Link as={Link} to="/storepersonnel" active={currentPath === "/storepersonnel"}>Store Personnel</Nav.Link>
             </Nav.Item>
         </Nav>
+
+        <div className="text-center my-3">
+            <Button variant="warning" onClick={handleReset}>Reset Database</Button>
+        </div>
         </>
     )
 } export default Navigation;
