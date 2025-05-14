@@ -8,9 +8,11 @@
 
 import { VscEdit, VscTrash } from "react-icons/vsc";
 import ExpandableDescription from './ExpandableDescription';
+import DeleteContactForm from "./DeleteContactForm";
 import '../App.css';
+import { backendURL } from "../config";
 
-const TableRow = ({ rowObject, onDelete, onEdit, showEditDelete = false}) => {
+const TableRow = ({ rowObject, onDelete, onEdit, showEditDelete = false, backendURL, refreshContacts}) => {
         // Handler for edit button click
         const handleEdit = (e) => {
             e.preventDefault();
@@ -22,11 +24,33 @@ const TableRow = ({ rowObject, onDelete, onEdit, showEditDelete = false}) => {
         };
         
         // Handler for delete button click
-        const handleDelete = (e) => {
+        const handleDelete = async (e) => {
             e.preventDefault();
-            if (onDelete) {
-                if (window.confirm(`Are you sure you want to delete this record?`)) {
-                    onDelete(rowObject.id);
+
+            // Confirm deletion before proceeding
+            const confirmed = window.confirm(`Are you sure you want to delete this record?`);
+            if (confirmed) {
+                const fullname = rowObject["First Name"] + ' ' + rowObject["Last Name"];
+                const formData = {
+                    delete_contact_id: rowObject["Contact ID"],
+                    delete_contact_name: fullname,
+                };
+    
+                try {
+                    const response = await fetch(`${backendURL}/contacts/delete`, { // Use backendURL here
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData),
+                    });
+    
+                    if (response.ok) {
+                        console.log("Contact deleted successfully.");
+                        refreshContacts(); // Refresh contacts list
+                    } else {
+                        console.error("Error deleting contact.");
+                    }
+                } catch (error) {
+                    console.error('Error during delete operation:', error);
                 }
             }
         };
@@ -78,6 +102,7 @@ const TableRow = ({ rowObject, onDelete, onEdit, showEditDelete = false}) => {
                 <td>
                     <VscEdit className="edit-button" onClick={handleEdit}/>
                     <VscTrash className="delete-button" onClick={handleDelete}/>
+                    
                 </td>
             ) : (
                 <td></td>
