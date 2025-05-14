@@ -193,7 +193,7 @@ app.post('/contacts/delete', async function (req, res) {
         );
 
         // Redirect the user to the updated webpage data
-        res.redirect('/contacts');
+        res.sendStatus(200);
     } catch (error) {
         console.error('Error executing queries:', error);
         // Send a generic error message to the browser

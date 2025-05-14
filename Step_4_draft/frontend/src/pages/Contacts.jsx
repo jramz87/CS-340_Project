@@ -90,7 +90,7 @@ function Contacts({ backendURL }) {
 
                 <tbody>
                     {contacts.map((contact, index) => (
-                        <TableRow rowObject={contact} onEdit={handleEdit} onDelete={handleDelete} showEditDelete={true} backendURL={backendURL}/>
+                        <TableRow rowObject={contact} onEdit={handleEdit} onDelete={handleDelete} showEditDelete={true} backendURL={backendURL} refreshContacts={getData}/>
                     ))}
 
                 </tbody>

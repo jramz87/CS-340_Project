@@ -8,9 +8,7 @@
 
 import { VscEdit, VscTrash } from "react-icons/vsc";
 import ExpandableDescription from './ExpandableDescription';
-import DeleteContactForm from "./DeleteContactForm";
 import '../App.css';
-import { backendURL } from "../config";
 
 const TableRow = ({ rowObject, onDelete, onEdit, showEditDelete = false, backendURL, refreshContacts}) => {
         // Handler for edit button click
