@@ -6,12 +6,12 @@
 
 SET FOREIGN_KEY_CHECKS = 0;
 SET AUTOCOMMIT = 0;
-DROP TABLE IF EXISTS Bikes;
-DROP TABLE IF EXISTS Contacts;
-DROP TABLE IF EXISTS Customers;
 DROP TABLE IF EXISTS RepairReports;
 DROP TABLE IF EXISTS SalesReports;
 DROP TABLE IF EXISTS StorePersonnel;
+DROP TABLE IF EXISTS Customers;
+DROP TABLE IF EXISTS Contacts;
+DROP TABLE IF EXISTS Bikes;
 
 -- -----------------------------------------------------
 -- Table Bikes
