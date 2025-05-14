@@ -18,7 +18,7 @@ app.use(cors({ credentials: true, origin: "*" }));
 app.use(express.json()); // this is needed for post requests
 
 
-const PORT = 7016;
+const PORT = 7014;
 
 // ########################################
 // ########## ROUTE HANDLERS
@@ -77,8 +77,7 @@ app.get('/customers', async (req, res) => {
 app.get('/repairreports', async (req, res) => {
     try {
         // Create and execute our queries
-        const query1 = 'SELECT RepairReports.repairID AS "Repair ID", RepairReports.personnelID, \
-                        Contacts.firstName AS "First Name", \
+        const query1 = 'SELECT RepairReports.repairID AS "Repair ID", Contacts.firstName AS "First Name", \
                         Contacts.lastName AS "Last Name", RepairReports.dateRepaired AS "Repair Date", \
                         RepairReports.hoursSpent AS "Hours", RepairReports.bikeID AS "Bike Repaired", \
                         RepairReports.description AS "Description" FROM RepairReports \

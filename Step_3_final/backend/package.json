@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "development": "nodemon server.js",
-    "production": "pm2 start server.js --name backend-app-dev",
+    "production": "pm2 start server.js --name backend-app",
     "stop_production": "pm2 stop backend-app",
     "start": "node server.js",
     "status": "pm2 status",
