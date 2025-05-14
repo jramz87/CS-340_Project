@@ -2,6 +2,10 @@
 // The code here was based on the the starter code provided in Module 6, Exploration "Web Application Technology" from:
 // https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
+// Citation for the code below (5/14/2025):
+// The code here was based on the the starter code provided in Module 8, Exploration "Implementing CUD operations in your app" from:
+// https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
+
 // ########################################
 // ########## SETUP
 
@@ -170,6 +174,33 @@ app.get('/storepersonnel', async (req, res) => {
         res.status(500).send("An error occurred while executing the database queries.");
     }
     
+});
+
+// DELETE ROUTES
+
+app.post('/contacts/delete', async function (req, res) {
+    try {
+        // Parse frontend form information
+        let data = req.body;
+        console.log(data);
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = `CALL sp_DeleteContact(?);`;
+        await db.query(query1, [data.delete_contact_id]);
+
+        console.log(`DELETE contacts. ID: ${data.delete_contact_id} ` +
+            `Name: ${data.delete_contact_name}`
+        );
+
+        // Redirect the user to the updated webpage data
+        res.redirect('/contacts');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
 });
 
 // ########################################
