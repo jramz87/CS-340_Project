@@ -5,6 +5,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { backendURL } from './config';
 
 // Pages
 import Home from './pages/Home';
@@ -19,14 +20,14 @@ import StorePersonnel from './pages/StorePersonnel';
 import Navigation from './components/Navigation';
 
 // Define the backend port and URL for API requests
-const backendPort = 6396;  // Use the port you assigned to the backend server, this would normally go in a .env file
-const backendURL = `http://classwork.engr.oregonstate.edu:${backendPort}`;
+//const backendPort = 6396;  // Use the port you assigned to the backend server, this would normally go in a .env file
+//const backendURL = `http://classwork.engr.oregonstate.edu:${backendPort}`;
 
 function App() {
 
     return (
         <>
-            <Navigation />
+            <Navigation backendURL={backendURL}/>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/bikes" element={<Bikes backendURL={backendURL} />} />

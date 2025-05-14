@@ -10,14 +10,14 @@ import Button from 'react-bootstrap/Button'
 import { Link, useLocation } from 'react-router-dom';
 import '../App.css';
 
-function Navigation() {
+function Navigation({ backendURL }) {
 
     const activepage = useLocation();
     const currentPath = activepage.pathname;
 
     const handleReset = async () => {
         try {
-            const response = await fetch('http://classwork.engr.oregonstate.edu:6396/reset-db', {
+            const response = await fetch(`${backendURL}/reset-db`, {
                 method: 'POST',
             });
 
@@ -32,7 +32,7 @@ function Navigation() {
             alert('Error connecting to the backend.');
         }
     };
-    
+
     return (
         <>
         <div className="logo-banner bg-navy text-white text-center py-3 mb-0">
