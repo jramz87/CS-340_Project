@@ -203,6 +203,29 @@ app.post('/contacts/delete', async function (req, res) {
     }
 });
 
+app.post('/repairreports/delete', async function (req, res) {
+    try {
+        // Parse frontend form information
+        let data = req.body;
+        console.log(data);
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = `CALL sp_DeleteRepair(?);`;
+        await db.query(query1, [data.delete_repair_id]);
+
+        console.log(`DELETE contacts. ID: ${data.delete_repair_id}`);
+
+        // Redirect the user to the updated webpage data
+        res.sendStatus(200);
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
 // ########################################
 // ########## LISTENER
 

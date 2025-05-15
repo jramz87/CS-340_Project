@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import TableRow from '../components/TableRow';
+import RepairReportTableRow from '../components/RepairReportTableRow';
 import CreateRepairReport from '../components/CreateRepairReport';
 import UpdateRepairReport from '../components/UpdateRepairReport';
 import { VscAdd } from "react-icons/vsc";
@@ -98,11 +98,13 @@ function RepairReports({ backendURL }) {
 
                 <tbody>
                     {repairreports.map((repairreport, index) => (
-                        <TableRow  
+                        <RepairReportTableRow  
                             key={repairreport["Repair ID"] || index}
                             rowObject={repairreport}
                             onEdit={handleEdit}
                             onDelete={handleDelete}
+                            backendURL={backendURL}
+                            refreshReports={getData}
                             showEditDelete={true}
                         />
                     ))}
