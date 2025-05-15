@@ -3,7 +3,7 @@
 // https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
 import { useState, useEffect } from 'react';  // Importing useState for managing state in the component
-import TableRow from '../components/TableRow';
+import ContactsTableRow from '../components/ContactsTableRow';
 import CreateContactForm from '../components/CreateContactForm';
 import UpdateContactForm from '../components/UpdateContactForm';
 import { VscAdd } from "react-icons/vsc";
@@ -90,7 +90,7 @@ function Contacts({ backendURL }) {
 
                 <tbody>
                     {contacts.map((contact, index) => (
-                        <TableRow rowObject={contact} onEdit={handleEdit} onDelete={handleDelete} showEditDelete={true} backendURL={backendURL} refreshContacts={getData}/>
+                        <ContactsTableRow key={index} rowObject={contact} backendURL={backendURL} refreshContacts={getData} />
                     ))}
 
                 </tbody>
