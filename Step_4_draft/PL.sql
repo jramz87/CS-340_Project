@@ -506,8 +506,10 @@ END //
 DELIMITER ;
 
 -- #############################
--- DELETE contacts
+-- DELETE Operations
 -- #############################
+
+-- sp_DeleteContact procedure
 DROP PROCEDURE IF EXISTS sp_DeleteContact;
 
 DELIMITER //
@@ -525,7 +527,7 @@ BEGIN
     END;
 
     START TRANSACTION;
-        -- Deleting corresponding rows from both contacts table and 
+        -- Deleting corresponding rows from both contacts table
         -- ON CASCADE prevents deletion anomolies
         DELETE FROM Contacts WHERE contactID = c_id;
 
@@ -540,3 +542,38 @@ BEGIN
 
 END //
 DELIMITER ;
+
+-- sp_DeleteRepair procedure
+DROP PROCEDURE IF EXISTS sp_DeleteRepair;
+
+DELIMITER //
+CREATE PROCEDURE sp_DeleteRepair(IN r_id INT)
+BEGIN
+    DECLARE error_message VARCHAR(255); 
+
+    -- error handling
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        -- Roll back the transaction on any error
+        ROLLBACK;
+        -- Propogate the custom error message to the caller
+        RESIGNAL;
+    END;
+
+    START TRANSACTION;
+        -- Deleting corresponding rows from repair reports table
+        -- ON CASCADE prevents deletion anomolies
+        DELETE FROM RepairReports WHERE repairID = r_id;
+
+        -- ROW_COUNT() returns the number of rows affected by the preceding statement.
+        IF ROW_COUNT() = 0 THEN
+            set error_message = CONCAT('No matching record found in contacts for id: ', r_id);
+            -- Trigger custom error, invoke EXIT HANDLER
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = error_message;
+        END IF;
+
+    COMMIT;
+
+END //
+DELIMITER ;
+
