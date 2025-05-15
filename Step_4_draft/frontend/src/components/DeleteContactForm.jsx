@@ -30,9 +30,7 @@ const DeleteContactForm = ({ rowObject, backendURL, refreshContacts }) => {
     };
 
     return (
-        <td>
-            <VscTrash className="delete-button" onClick={handleSubmit}/>
-        </td>
+        <VscTrash className="delete-button" onClick={handleSubmit}/>
     );
 };
 
