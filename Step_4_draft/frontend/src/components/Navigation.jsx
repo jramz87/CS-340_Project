@@ -8,6 +8,8 @@
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button'
 import { Link, useLocation } from 'react-router-dom';
+import bikeIcon from '../assets/bike-256.png';
+import bikeIcon2 from '../assets/bike-3-256.png';
 import '../App.css';
 
 function Navigation({ backendURL }) {
@@ -35,8 +37,22 @@ function Navigation({ backendURL }) {
 
     return (
         <>
-        <div className="logo-banner bg-navy text-white text-center py-3 mb-0">
-            <h2 className="m-0">Oaklaura Bike Co-Op</h2>
+        <div className="logo-banner bg-navy text-white text-center py-3 mb-0 d-flex align-items-center justify-content-center">
+            <img 
+                src={bikeIcon} 
+                alt="Bike icon" 
+                className="nav-icon"
+                width="70"
+                height="50"
+            />
+            <h2 className="m-0">    Oaklaura Bike Co-Op    </h2>
+            <img 
+                src={bikeIcon2} 
+                alt="Bike icon" 
+                className="nav-icon"
+                width="80"
+                height="50"
+            />
         </div>
 
         <Nav justify variant="tabs" activeKey={currentPath}>

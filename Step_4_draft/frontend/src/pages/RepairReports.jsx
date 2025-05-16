@@ -1,3 +1,7 @@
+// Citation for the code below (4/30/2025):
+// The code here was adapted from the the starter code provided in Module 6, Exploration "Web Application Technology" from:
+// https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
+
 import { useState, useEffect } from 'react';
 import RepairReportTableRow from '../components/RepairReportTableRow';
 import CreateRepairReport from '../components/CreateRepairReport';

@@ -16,6 +16,7 @@ function Home() {
                 <p>Store personnel consist of both volunteers and employees. Most volunteers are not experienced bike mechanics, so they often can't fully repair a bike during the few hours the co-op is open for volunteer work. To maintain continuity and organization, volunteers are expected to repair what they can during their shift and document their progress in a report. This allows the next volunteer and/or employee to review the logs and continue the work where the previous one left off. Sometimes volunteers engage in non-bike specific work, such as cleaning and fixing stock parts such as cassettes, wheels and derailleurs, which gets documented in these repair reports as well. Once a volunteer believes a bike is fully repaired, a trained employee inspects it to ensure it meets safety standards before placing it on the sales floor. Once there, a bike can be sold, a transaction which is tracked through a sales report.</p>
                 <p>Historically, the co-op tracked repair progress and sales using handwritten notecards stored in a filing cabinet. However, as the organization grows, this system has become increasingly difficult to manage. Implementing a database would be an ideal solution for organizing and sharing information between volunteers and employees about the status of each bicycle, as well as for tracking the inventory and sales history of the ever expanding co-op.</p>
             </div>
+            <br></br>
             <div className="webpageDescription">
                 <h4>Overview of Webapp:</h4>
                 <ul>
@@ -29,7 +30,8 @@ function Home() {
                     <li>Read operations on every entity</li>
                     <li>Create operations on Contacts and RepairReport entities (in progress)</li>
                     <li>Update operations on Contacts and RepairReport entities (in progress)</li>
-                    <li>Delete operations on Contacts and RepairReport entities (in progress)</li>
+                    <li>Delete operations on Contacts and RepairReport entities</li>
+                    <li>Reset database</li>
                 </ul>
             </div>
         </>

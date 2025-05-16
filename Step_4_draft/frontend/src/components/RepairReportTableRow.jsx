@@ -1,7 +1,11 @@
+// Citation for the code below (5/14/2025):
+// The code here was based on the the starter code provided in Module 8, Exploration "Implementing CUD operations in your app" from:
+// https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
+
 import { VscEdit } from "react-icons/vsc";
 import ExpandableDescription from './ExpandableDescription';
-import '../App.css';
 import DeleteRepairReportForm from './DeleteRepairReport';
+import '../App.css';
 
 const RepairReportTableRow = ({ rowObject, onEdit, backendURL, refreshReports }) => {
             // Handler for edit button click

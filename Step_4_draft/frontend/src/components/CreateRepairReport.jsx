@@ -1,3 +1,7 @@
+//Citation for the code below (5/1/2025):
+// The code here was based on the the starter code provided in Module 6, Exploration "Web Application Technology" from:
+// https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
+
 import { useState, useEffect } from 'react';
 import { Form, Button, Container, CloseButton } from 'react-bootstrap';
 import '../App.css';

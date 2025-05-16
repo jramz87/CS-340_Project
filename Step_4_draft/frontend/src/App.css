@@ -2,6 +2,10 @@
 /* The color palette used here was choosen from the website below:
 /* https://coolors.co/palette/000000-14213d-fca311-e5e5e5-ffffff
 
+/* Citation for the code below:
+/* The styling below was based on GenAI: claude.ai
+/* Prompt: "Use this color palette to help define CSS to style this page"
+
 /* Color Palette Variables */
 :root {
   --color-black: #000000;
@@ -137,6 +141,11 @@ a:hover {
   color: var(--color-white);
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+.nav-icon {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* Button Styling */
