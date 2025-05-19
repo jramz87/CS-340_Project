@@ -17,7 +17,10 @@ const RepairReportTableRow = ({ rowObject, onEdit, backendURL, refreshReports })
                     onEdit(editableData);
                 }
             };
-
+        // Citation for the code below:
+        // The styling below was based on GenAI: claude.ai
+        // Prompt: "Write a function to convert SQL datetime data into MM-DD-YYYY format"
+        // Format date strings
         // Format date strings
         const formatDate = (dateString) => {
             if (!dateString) return '';

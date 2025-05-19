@@ -192,7 +192,7 @@ app.post('/contacts/delete', async function (req, res) {
             `Name: ${data.delete_contact_name}`
         );
 
-        // Redirect the user to the updated webpage data
+        // Send a success status
         res.sendStatus(200);
     } catch (error) {
         console.error('Error executing queries:', error);
@@ -215,7 +215,7 @@ app.post('/repairreports/delete', async function (req, res) {
 
         console.log(`DELETE contacts. ID: ${data.delete_repair_id}`);
 
-        // Redirect the user to the updated webpage data
+        // send a success status
         res.sendStatus(200);
     } catch (error) {
         console.error('Error executing queries:', error);
