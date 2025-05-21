@@ -580,6 +580,8 @@ DELIMITER ;
 -- #############################
 -- UPDATE operations
 -- #############################
+
+-- Update Contacts
 DROP PROCEDURE IF EXISTS sp_UpdateContacts;
 
 DELIMITER //
@@ -593,5 +595,23 @@ BEGIN
         Contacts.phone = phone_in,
         Contacts.email = email_in 
     WHERE Contacts.contactID = id_in; 
+END //
+DELIMITER ;
+
+-- Update Repair Reports
+DROP PROCEDURE IF EXISTS sp_UpdateRepairReports;
+
+DELIMITER //
+CREATE PROCEDURE sp_UpdateRepairReports(IN new_pid INT, IN new_date date, IN new_time decimal(4, 2), IN new_description VARCHAR(255), IN new_bid INT, IN r_id INT)
+
+BEGIN
+    UPDATE RepairReports 
+    SET 
+        personnelID = new_pid, 
+        dateRepaired = new_date,
+        hoursSpent = new_time,
+        description = new_description,
+        bikeID = new_bid 
+    WHERE repairID = r_id; 
 END //
 DELIMITER ;
