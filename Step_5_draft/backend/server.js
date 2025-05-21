@@ -308,6 +308,37 @@ app.post('/contacts/update', async function (req, res) {
     }
 });
 
+app.post('/repairreports/update', async function (req, res) {
+    try {
+        // Parse frontend form information
+        const data = req.body;
+
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query = 'CALL sp_UpdateRepairReports(?, ?, ?, ?, ?, ?);';
+        await db.query(query, [
+            data.personnelID,
+            data.dateRepaired,
+            data.hoursSpent,
+            data.description,
+            data.bikeID,
+            data.repairID
+        ]);
+
+        console.log(`UPDATE repair info for repairID: ${data.repairID}`
+        );
+
+        // Redirect the user to the updated webpage data
+        res.redirect('/repairreports');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
 // ########################################
 // ########## LISTENER
 

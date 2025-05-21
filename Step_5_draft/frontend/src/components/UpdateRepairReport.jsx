@@ -105,8 +105,8 @@ function UpdateRepairReport({ report, storepersonnel, bikes, backendURL, refresh
         console.log("Submitting form data:", formData);
         
         try {
-            const response = await fetch(`${backendURL}/repairreports/${formData.repairID}`, {
-                method: 'PUT',
+            const response = await fetch(`${backendURL}/repairreports/update`, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
