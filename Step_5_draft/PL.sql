@@ -577,3 +577,21 @@ BEGIN
 END //
 DELIMITER ;
 
+-- #############################
+-- UPDATE operations
+-- #############################
+DROP PROCEDURE IF EXISTS sp_UpdateContacts;
+
+DELIMITER //
+CREATE PROCEDURE sp_UpdateContacts(IN fname_in VARCHAR(45), IN lname_in VARCHAR(45), IN phone_in VARCHAR(45), IN email_in VARCHAR(45), IN id_in INT)
+
+BEGIN
+    UPDATE Contacts 
+    SET 
+        Contacts.firstName = fname_in, 
+        Contacts.lastName = lname_in,
+        Contacts.phone = phone_in,
+        Contacts.email = email_in 
+    WHERE Contacts.contactID = id_in; 
+END //
+DELIMITER ;
