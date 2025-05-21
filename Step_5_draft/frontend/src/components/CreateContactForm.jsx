@@ -2,6 +2,10 @@
 // The code here was based on the the starter code provided in Module 6, Exploration "Web Application Technology" from:
 // https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
+// Citation for the code below (5/21/2025):
+// The form validation code here was based on GenAI: chatgpt
+// Prompt: "Write me a React component that will validate the phone number and email in form" 
+
 import { useState } from 'react';
 import { Form, Button, Container, CloseButton } from 'react-bootstrap';
 import '../App.css';
@@ -10,6 +14,11 @@ const CreateContactForm = ({ backendURL, refreshContacts, onClose }) => {
         const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
+        phone: '',
+        email: ''
+    });
+
+    const [errors, setErrors] = useState({
         phone: '',
         email: ''
     });
@@ -30,8 +39,30 @@ const CreateContactForm = ({ backendURL, refreshContacts, onClose }) => {
         });
     };
 
+    const validateForm = () => {
+        const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let valid = true;
+        let newErrors = { phone: '', email: '' };
+    
+        if (!phonePattern.test(formData.phone)) {
+            newErrors.phone = 'Phone number must be in the format 123-456-7890.';
+            valid = false;
+        }
+    
+        if (!emailPattern.test(formData.email)) {
+            newErrors.email = 'Please enter a valid email address.';
+            valid = false;
+        }
+    
+        setErrors(newErrors);
+        return valid;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateForm()) return;
         
         try {
             const requestData = {
@@ -103,17 +134,25 @@ const CreateContactForm = ({ backendURL, refreshContacts, onClose }) => {
                             className="text-center" 
                             onChange={handleChange} 
                             value={formData.phone}
+                            isInvalid={!!errors.phone}
                         />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.phone}
+                        </Form.Control.Feedback>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="create_contact_email">
                         <Form.Label>Email:</Form.Label>
                         <Form.Control 
-                            type="email" 
+                            type="text" 
                             className="text-center" 
                             onChange={handleChange} 
                             value={formData.email}
+                            isInvalid={!!errors.email}
                         />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.email}
+                        </Form.Control.Feedback>
                     </Form.Group>
 
                     <div className="d-grid gap-2">
