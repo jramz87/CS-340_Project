@@ -2,10 +2,15 @@
 // The code here was based on the the starter code provided in Module 8, Exploration "Implementing CUD operations in your app" from:
 // https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
 
+// Citation for the code below (5/21/2025):
+// The form validation code here was based on GenAI: chatgpt
+// Prompt: "Write me a React component that will validate the phone number and email in form" 
+
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+
 
 function UpdateContactForm({ contact, backendURL, refreshContacts, onClose }) {
     // Check and log the received contact data to help with debugging
@@ -22,6 +27,11 @@ function UpdateContactForm({ contact, backendURL, refreshContacts, onClose }) {
         email: contact["Email"] || contact.email
     });
 
+    const [errors, setErrors] = useState({
+        phone: '',
+        email: ''
+    });
+
     // Handle form field changes
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -31,10 +41,32 @@ function UpdateContactForm({ contact, backendURL, refreshContacts, onClose }) {
         });
     };
 
+    const validateForm = () => {
+        const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let valid = true;
+        let newErrors = { phone: '', email: '' };
+    
+        if (!phonePattern.test(formData.phone)) {
+            newErrors.phone = 'Phone number must be in the format 123-456-7890.';
+            valid = false;
+        }
+    
+        if (!emailPattern.test(formData.email)) {
+            newErrors.email = 'Please enter a valid email address.';
+            valid = false;
+        }
+    
+        setErrors(newErrors);
+        return valid;
+    };
+
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         
+        if (!validateForm()) return;
+
         try {
             const response = await fetch(`${backendURL}/contacts/update`, {
                 method: 'POST',
@@ -93,11 +125,15 @@ function UpdateContactForm({ contact, backendURL, refreshContacts, onClose }) {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
+                            isInvalid={!!errors.phone}
                             required
                         />
                         <Form.Text className="text-muted">
                             Format: 123-456-7890
                         </Form.Text>
+                        <Form.Control.Feedback type="invalid">
+                            {errors.phone}
+                        </Form.Control.Feedback>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
@@ -107,8 +143,12 @@ function UpdateContactForm({ contact, backendURL, refreshContacts, onClose }) {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
+                            isInvalid={!!errors.email}
                             required
                         />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.email}
+                        </Form.Control.Feedback>
                     </Form.Group>
 
                     <div className="d-flex justify-content-end gap-2">
