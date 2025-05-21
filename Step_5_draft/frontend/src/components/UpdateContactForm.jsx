@@ -36,8 +36,8 @@ function UpdateContactForm({ contact, backendURL, refreshContacts, onClose }) {
         e.preventDefault();
         
         try {
-            const response = await fetch(`${backendURL}/contacts/${formData.contactID}`, {
-                method: 'PUT',
+            const response = await fetch(`${backendURL}/contacts/update`, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
