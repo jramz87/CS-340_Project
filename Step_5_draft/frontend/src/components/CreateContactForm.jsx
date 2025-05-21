@@ -2,10 +2,66 @@
 // The code here was based on the the starter code provided in Module 6, Exploration "Web Application Technology" from:
 // https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
+import { useState } from 'react';
 import { Form, Button, Container, CloseButton } from 'react-bootstrap';
 import '../App.css';
 
-const CreateContactForm = ({ contacts, backendURL, refreshContacts, onClose }) => {
+const CreateContactForm = ({ backendURL, refreshContacts, onClose }) => {
+        const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: ''
+    });
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        // Map form field IDs to the state object keys
+        const fieldMapping = {
+            'create_contact_fname': 'firstName',
+            'create_contact_lname': 'lastName',
+            'create_contact_phone': 'phone',
+            'create_contact_email': 'email'
+        };
+        
+        setFormData({
+            ...formData,
+            [fieldMapping[id]]: value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        try {
+            const requestData = {
+                firstNameInput: formData.firstName,
+                lastNameInput: formData.lastName,
+                phoneInput: formData.phone,
+                emailInput: formData.email
+            };
+
+            const response = await fetch(`${backendURL}/contacts`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            });
+
+            if (response.ok) {
+                refreshContacts();
+                onClose();
+            } else {
+                const errorData = await response.json();
+                console.error('Failed to create contact:', errorData);
+                alert('Failed to create contact. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error creating contact:', error);
+            alert('Error creating contact. Please try again.');
+        }
+    };
 
     return (
         <>
@@ -17,25 +73,47 @@ const CreateContactForm = ({ contacts, backendURL, refreshContacts, onClose }) =
                     <CloseButton onClick={onClose} className="position-absolute top-0 end-0 mt-3 me-3"/>
                 </div>
 
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="create_contact_fname">
                         <Form.Label>First Name:</Form.Label>
-                        <Form.Control type="text" className="text-center"/>
+                        <Form.Control 
+                            type="text" 
+                            className="text-center" 
+                            onChange={handleChange} 
+                            value={formData.firstName}
+                            required
+                        />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="create_contact_lname">
                         <Form.Label>Last Name:</Form.Label>
-                        <Form.Control type="text" className="text-center"/>
+                        <Form.Control 
+                            type="text" 
+                            className="text-center" 
+                            onChange={handleChange} 
+                            value={formData.lastName}
+                            required
+                        />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="create_contact_phone">
                         <Form.Label>Phone:</Form.Label>
-                        <Form.Control type="tel" className="text-center"/>
+                        <Form.Control 
+                            type="tel" 
+                            className="text-center" 
+                            onChange={handleChange} 
+                            value={formData.phone}
+                        />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="create_contact_email">
                         <Form.Label>Email:</Form.Label>
-                        <Form.Control type="email" className="text-center"/>
+                        <Form.Control 
+                            type="email" 
+                            className="text-center" 
+                            onChange={handleChange} 
+                            value={formData.email}
+                        />
                     </Form.Group>
 
                     <div className="d-grid gap-2">
