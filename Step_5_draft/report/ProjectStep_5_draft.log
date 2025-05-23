@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  15 MAY 2025 23:52
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.3.8)  23 MAY 2025 16:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**ProjectStep_4_draft.tex
-(./ProjectStep_4_draft.tex
+**ProjectStep_5_draft.tex
+(./ProjectStep_5_draft.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -658,8 +658,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 27.
 
-(./ProjectStep_4_draft.aux)
-\openout1 = `ProjectStep_4_draft.aux'.
+(./ProjectStep_5_draft.aux)
+\openout1 = `ProjectStep_5_draft.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
@@ -775,9 +775,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 42.
 Package hyperref Info: Link coloring ON on input line 42.
-(./ProjectStep_4_draft.out) (./ProjectStep_4_draft.out)
+(./ProjectStep_5_draft.out) (./ProjectStep_5_draft.out)
 \@outlinefile=\write4
-\openout4 = `ProjectStep_4_draft.out'.
+\openout4 = `ProjectStep_5_draft.out'.
 
 
 
@@ -872,11 +872,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
 [10]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 657.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 657.
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -913,6 +908,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
 [14]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 833.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 833.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -940,11 +940,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
 [17]
-File: ERD.png Graphic file (type bmp)
-<ERD.png>
-File: Schema.png Graphic file (type bmp)
-<Schema.png>
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -954,11 +949,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
 [18]
-File: Bikes.png Graphic file (type bmp)
-<Bikes.png>
-File: StorePersonnel.png Graphic file (type bmp)
-<StorePersonnel.png>
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -968,15 +958,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
 [19]
-File: Customers.png Graphic file (type bmp)
-<Customers.png>
-File: RepairReports.png Graphic file (type bmp)
-<RepairReports.png>
-File: SalesReports.png Graphic file (type bmp)
-<SalesReports.png>
-File: Contacts.png Graphic file (type bmp)
-<Contacts.png>
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -994,21 +975,85 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
 
-[21] (./ProjectStep_4_draft.aux)
+[21]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 20.39996pt, for example:
+(fancyhdr)                \setlength{\headheight}{20.39996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
+
+[22]
+File: ERD.png Graphic file (type bmp)
+<ERD.png>
+File: Schema.png Graphic file (type bmp)
+<Schema.png>
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 20.39996pt, for example:
+(fancyhdr)                \setlength{\headheight}{20.39996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
+
+[23]
+File: Bikes.png Graphic file (type bmp)
+<Bikes.png>
+File: StorePersonnel.png Graphic file (type bmp)
+<StorePersonnel.png>
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 20.39996pt, for example:
+(fancyhdr)                \setlength{\headheight}{20.39996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
+
+[24]
+File: Customers.png Graphic file (type bmp)
+<Customers.png>
+File: RepairReports.png Graphic file (type bmp)
+<RepairReports.png>
+File: SalesReports.png Graphic file (type bmp)
+<SalesReports.png>
+File: Contacts.png Graphic file (type bmp)
+<Contacts.png>
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 20.39996pt, for example:
+(fancyhdr)                \setlength{\headheight}{20.39996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
+
+[25]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 20.39996pt, for example:
+(fancyhdr)                \setlength{\headheight}{20.39996pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-8.39996pt}.
+
+[26] (./ProjectStep_5_draft.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `ProjectStep_4_draft.out' has not changed.
+Package rerunfilecheck Info: File `ProjectStep_5_draft.out' has not changed.
 (rerunfilecheck)             Checksum: F29E8228F28B4D7F7A7AC7F19955B34F;1439.
  ) 
 Here is how much of TeX's memory you used:
- 24815 strings out of 473832
- 524320 string characters out of 5729482
+ 24824 strings out of 473832
+ 524467 string characters out of 5729482
  952284 words of memory out of 5000000
- 47527 multiletter control sequences out of 15000+600000
+ 47536 multiletter control sequences out of 15000+600000
  559285 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  98i,11n,101p,1323b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ProjectStep_4_draft.pdf (21 pages).
+Output written on ProjectStep_5_draft.pdf (26 pages).

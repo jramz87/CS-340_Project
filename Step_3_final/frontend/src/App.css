@@ -139,6 +139,11 @@ a:hover {
   letter-spacing: 1px;
 }
 
+.nav-icon {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
 /* Button Styling */
 .btn-primary:hover {  /* used for create record button */
   background-color: var(--color-navy);
