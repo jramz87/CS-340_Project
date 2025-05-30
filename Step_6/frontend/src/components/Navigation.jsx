@@ -6,17 +6,34 @@
 // The code used for the Navbar was based on a freely available React Bootstrap component:
 // https://react-bootstrap.netlify.app/docs/components/navs
 
+import { useState, useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import { Link, useLocation } from 'react-router-dom';
 import bikeIcon from '../assets/bike-3-256.png';
+import ResetDatabaseConfirmation from '../components/ResetDatabaseConfirmation';
 import '../App.css';
 
 function Navigation({ backendURL }) {
     const activepage = useLocation();
     const currentPath = activepage.pathname;
+    const [showResetConfirmation, setShowResetConfirmation] = useState(false);
+    const [popupPosition, setPopupPosition] = useState(null);
 
-    const handleReset = async () => {
+    const handleResetClick = (e) => {
+        e.preventDefault();
+        
+        // Get position for popup - position above the button
+        const rect = e.target.getBoundingClientRect();
+        setPopupPosition({
+            top: rect.top + window.scrollY - 10,
+            left: rect.left + window.scrollX - 150
+        });
+        
+        setShowResetConfirmation(true);
+    };
+
+    const handleConfirmReset = async () => {
         try {
             const response = await fetch(`${backendURL}/reset-db`, {
                 method: 'POST',
@@ -32,7 +49,28 @@ function Navigation({ backendURL }) {
             console.error('Error resetting database:', err);
             alert('Error connecting to the backend.');
         }
+        
+        setShowResetConfirmation(false);
     };
+
+    const handleCancelReset = () => {
+        setShowResetConfirmation(false);
+        setPopupPosition(null);
+    };
+
+    // Close popup when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (showResetConfirmation && !event.target.closest('.delete-confirmation-popup')) {
+                handleCancelReset();
+            }
+        };
+
+        if (showResetConfirmation) {
+            document.addEventListener('mousedown', handleClickOutside);
+            return () => document.removeEventListener('mousedown', handleClickOutside);
+        }
+    }, [showResetConfirmation]);
 
     return (
         <div className="navigation-wrapper">
@@ -81,8 +119,16 @@ function Navigation({ backendURL }) {
             </div>
 
             <div className="text-center my-3">
-                <Button variant="warning" onClick={handleReset}>Reset Database</Button>
+                <Button variant="warning" onClick={handleResetClick}>Reset Database</Button>
             </div>
+
+            {showResetConfirmation && (
+                <ResetDatabaseConfirmation 
+                    onConfirm={handleConfirmReset}
+                    onCancel={handleCancelReset}
+                    position={popupPosition}
+                />
+            )}
         </div>
     );
 }

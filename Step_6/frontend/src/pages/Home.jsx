@@ -29,7 +29,7 @@ function Home() {
                 <ul>
                     <li>Read operations on every entity</li>
                     <li>Create operations on Contacts and RepairReport entities</li>
-                    <li>Update operations on Contacts and RepairReport entities (in progress)</li>
+                    <li>Update operations on Contacts and RepairReport entities</li>
                     <li>Delete operations on Contacts and RepairReport entities</li>
                     <li>Reset database</li>
                 </ul>

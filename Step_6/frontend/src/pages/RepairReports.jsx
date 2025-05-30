@@ -11,9 +11,9 @@ import Button from 'react-bootstrap/Button';
 import '../App.css';
 
 function RepairReports({ backendURL }) {
-    // State variables
-    const [repairreports, setRepairReports] = useState([]);
-    const [storepersonnel, setStorePersonnel] = useState([]);
+    // Set up state variables to store and display the backend response
+    const [repairreports, setRepairreports] = useState([]);
+    const [storepersonnel, setStorepersonnel] = useState([]);
     const [bikes, setBikes] = useState([]);
     const [allBikes, setAllBikes] = useState([]);
     const [displayCreateForm, setDisplayCreateForm] = useState(false);
@@ -25,20 +25,17 @@ function RepairReports({ backendURL }) {
             const response = await fetch(backendURL + '/repairreports');
             
             // Convert the response into JSON format
-            const data = await response.json();
-            
-            // Debug logging
-            console.log("API response:", data);
+            const { repairreports, storepersonnel, bikes, allBikes } = await response.json();
     
             // Update the state with the response data
-            setRepairReports(data.repairreports || []);
-            setStorePersonnel(data.storepersonnel || []);
-            setBikes(data.bikes || []);
-            setAllBikes(data.allBikes || []);
+            setRepairreports(repairreports);
+            setStorepersonnel(storepersonnel);
+            setBikes(bikes);
+            setAllBikes(allBikes);
             
         } catch (error) {
             // If the API call fails, print the error to the console
-            console.log("Error fetching repair reports data:", error);
+            console.log(error);
         }
     };
 
@@ -62,44 +59,20 @@ function RepairReports({ backendURL }) {
         setEditingReport(null);
     };
 
-    // Handler for deleting a report
-    const handleDelete = async (reportId) => {
-        try {
-            const response = await fetch(`${backendURL}/repairreports/${reportId}`, {
-                method: 'DELETE',
-            });
-
-            if (response.ok) {
-                // Refresh the data after deletion
-                getData();
-            } else {
-                console.error('Failed to delete repair report');
-            }
-        } catch (error) {
-            console.error('Error deleting repair report:', error);
-        }
-    };
-
-    // Log state for debugging
-    useEffect(() => {
-        console.log("Current state - bikes:", bikes);
-        console.log("Current state - allBikes:", allBikes);
-    }, [bikes, allBikes]);
-
     return (
         <>
             <h1>Repair Reports Table:</h1>
 
-                        <div className="d-grid gap-2">
+            <div className="d-grid gap-2">
                 <Button variant="primary" size="lg" onClick={() => setDisplayCreateForm(!displayCreateForm)}>
-                    <VscAdd /> Create a Repair Record
+                    <VscAdd /> Add a Repair Report
                 </Button>
             </div>
 
             {displayCreateForm && (
                 <CreateRepairReport 
                     storepersonnel={storepersonnel} 
-                    bikes={bikes} // Use filtered bikes for new reports
+                    bikes={bikes} 
                     backendURL={backendURL} 
                     refreshRepairReports={getData} 
                     onClose={handleCloseForm}
@@ -109,8 +82,8 @@ function RepairReports({ backendURL }) {
             {editingReport && (
                 <UpdateRepairReport 
                     report={editingReport}
-                    storepersonnel={storepersonnel} 
-                    bikes={allBikes} // Use ALL bikes for editing
+                    storepersonnel={storepersonnel}
+                    bikes={allBikes}
                     backendURL={backendURL} 
                     refreshRepairReports={getData} 
                     onClose={handleCloseEditForm}
@@ -128,15 +101,13 @@ function RepairReports({ backendURL }) {
                 </thead>
 
                 <tbody>
-                    {repairreports.map((repairreport, index) => (
-                        <RepairReportTableRow  
-                            key={repairreport["Repair ID"] || index}
-                            rowObject={repairreport}
-                            onEdit={handleEdit}
-                            onDelete={handleDelete}
-                            backendURL={backendURL}
+                    {repairreports.map((report, index) => (
+                        <RepairReportTableRow 
+                            key={index}
+                            onEdit={handleEdit} 
+                            rowObject={report} 
+                            backendURL={backendURL} 
                             refreshReports={getData}
-                            showEditDelete={true}
                         />
                     ))}
                 </tbody>

@@ -6,7 +6,7 @@
   "scripts": {
     "development": "vite",
     "build": "vite build",
-    "production": "pm2 start reactServer.cjs --name frontend-app-dev",
+    "production": "pm2 start reactServer.cjs --name frontend-app",
     "stop_production": "pm2 stop frontend-app",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
