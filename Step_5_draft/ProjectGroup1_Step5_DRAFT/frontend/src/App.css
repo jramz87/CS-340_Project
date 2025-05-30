@@ -1,0 +1,410 @@
+/* Citation for the color palette used here (5/4/2025):
+/* The color palette used here was choosen from the website below:
+/* https://coolors.co/palette/000000-14213d-fca311-e5e5e5-ffffff
+
+/* Citation for the code below:
+/* The styling below was based on GenAI: claude.ai
+/* Prompt: "Use this color palette to help define CSS to style this page"
+
+/* Color Palette Variables */
+:root {
+  --color-black: #000000;
+  --color-navy: #14213D;
+  --color-orange: #FCA311;
+  --color-gray: #E5E5E5;
+  --color-white: #FFFFFF;
+}
+
+/* Default Styling */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+body {
+  background-color: var(--color-gray);
+  color: var(--color-navy);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-navy);
+  margin-bottom: 1rem;
+}
+
+.homepage h1 {
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(20, 33, 61, 0.3);
+  color: var(--color-navy);
+  margin-bottom: 1.5rem;
+}
+
+.homepage h3 {
+  text-align: center;
+}
+
+a {
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-orange);
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Nav Bar Styling */
+.navigation-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.nav-container {
+  background-color: var(--color-navy);
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  border-bottom: 3px solid var(--color-orange);
+}
+
+.nav {
+  margin-bottom: 0;
+  background-color: var(--color-navy);
+  border-radius: 0.3rem;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid var(--color-orange);
+  margin-bottom: 0px;
+  margin-top: 0px;
+  background-color: var(--color-navy);
+}
+
+.nav-tabs .nav-link {
+  color: var(--color-white);
+  border: 1px solid transparent;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: var(--color-gray) var(--color-gray) var(--color-orange);
+  background-color: rgba(252, 163, 17, 0.1);
+  color: var(--color-orange);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--color-white);
+  background-color: var(--color-navy);
+  border-color: var(--color-navy) var(--color-navy) var(--color-orange);
+  border-bottom: 3px solid var(--color-orange);
+  box-shadow: inset 0 -3px 0 var(--color-orange);
+}
+
+.logo-banner {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  padding: 1rem 0;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+}
+
+.logo-banner h2 {
+  color: var(--color-white);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-icon {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.nav-centered {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-navy);
+  margin-bottom: 0;
+}
+
+.nav-centered .nav-item {
+  flex: 0 0 auto;
+  margin: 0 10px;
+}
+
+.bg-navy {
+  background-color: var(--color-navy);
+}
+
+/* Button Styling */
+.btn-primary:hover { 
+  background-color: var(--color-navy);
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+  box-shadow: 0 0 0 0.2rem rgba(252, 163, 17, 0.25);
+}
+
+.btn-primary {
+  background-color: var(--color-navy);
+  border-color: var(--color-navy);
+  color: var(--color-white);
+  transition: all 1s ease;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+
+.btn-secondary {
+  background-color: var(--color-gray);
+  border-color: var(--color-gray);
+  color: var(--color-navy);
+  transition: all 1s ease;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gray);
+  border-color: var(--color-navy);
+  color: var(--color-navy);
+  box-shadow: 0 0 0 0.2rem rgba(252, 163, 17, 0.25);
+}
+
+.edit-button {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 10px;
+  color: var(--color-navy);
+  transition: color 0.3s ease;
+}
+
+.edit-button:hover {
+  color: var(--color-orange);
+}
+
+.delete-button {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 10px;
+  color: var(--color-navy);
+  transition: color 0.3s ease;
+}
+
+.delete-button:hover {
+  color: var(--color-orange);
+}
+
+/* Expandable Description */
+.description-tooltip {
+  position: absolute;
+  width: 300px;
+  max-width: 80vw;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.bubble-arrow-top-left {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid var(--color-white);
+}
+
+.tooltip-content {
+  max-height: 200px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--color-navy);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding-right: 15px;
+}
+
+.close-tooltip {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--color-navy);
+  transition: color 0.3s ease;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.close-tooltip:hover {
+  color: var(--color-orange);
+  background-color: rgba(229, 229, 229, 0.3);
+}
+
+.more-button {
+  background: none;
+  border: none;
+  color: var(--color-orange);
+  cursor: pointer;
+  font-size: 0.8em;
+  padding: 0 0.3em;
+  text-decoration: underline;
+  margin-left: 5px;
+  transition: color 0.3s ease;
+}
+
+.more-button:hover {
+  color: var(--color-navy);
+}
+
+/* Form Styling */
+.form-container {
+  background-color: var(--color-white);
+  border: 1px solid #ccc !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container .position-relative {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  border-bottom: 2px solid var(--color-orange) !important;
+  border-radius: 7px 7px 0 0;
+}
+
+.form-container h3 {
+  color: var(--color-white);
+}
+
+.form-container div {
+  margin-bottom: 20px;
+}
+
+.btn-close {
+  filter: invert(1) brightness(200%);
+}
+
+.form-label {
+  font-weight: bold;
+  color: var(--color-navy);
+  text-align: left;
+  display: block;
+}
+
+.form-control, .form-select {
+  border: 1px solid var(--color-gray);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 0.2rem rgba(252, 163, 17, 0.25);
+}
+
+.form-control::placeholder {
+  color: #aaa;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.p-0 {
+  max-width: 500px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-collapse: collapse;
+  background-color: var(--color-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+th {
+  padding: 12px 15px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--color-navy)
+}
+
+td {
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--color-gray);
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(229, 229, 229, 0.3);
+}
+
+tr:hover {
+  background-color: rgba(252, 163, 17, 0.1);
+}
+
+h1 {
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+}
