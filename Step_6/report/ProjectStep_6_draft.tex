@@ -54,7 +54,34 @@
 \section{Executive Summary}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, title=\textbf{Reflection on Major Changes Throughout Project}]
-EDIT ME
+
+Over the course of 11 weeks, our team (Grant Wu and Jessica Ramirez) developed a full-stack web application underpinned by a normalized relational database. This project followed a multi-phase structure that allowed us to build iteratively while incorporating continuous feedback from teaching assistants and peer reviewers.
+
+\vspace{0.2cm}
+
+The project began with the design of a schema representing a real-world bike co-op scenario. Our initial design featured five entities: StorePersonnel, Customers, Bikes, RepairReports, and SalesReports. Early feedback helped us identify normalization issues, prompting the addition of a sixth entity—Contacts—to eliminate redundancy and ensure compliance with 3rd Normal Form (3NF). Following schema finalization, we translated the design into SQL through structured DDL and DML scripts. We replaced hardcoded foreign keys with subqueries and corrected naming inconsistencies in foreign key attributes to improve clarity and maintain consistency.
+
+\vspace{0.2cm}
+
+Subsequent phases focused on UI development, beginning with static data display and evolving into a fully interactive interface. We implemented CRUD operations—Create, Read, Update, and Delete—for both the RepairReports (our M:M relationship intersection table) and Contacts tables. The Contacts table was chosen to demonstrate the ON DELETE CASCADE behavior defined in the DDL.sql file, specifically, how deleting a contact cascades the deletion to related records, thereby preventing deletion anomalies. A key design decision was to limit CUD functionality to two tables to maintain a clean, focused interface that exceeded project requirements without over-complication. To support demonstration and testing, we also added a Reset button that drops and reinitializes all tables with default data.
+
+\vspace{0.2cm}
+
+Major refinements based on feedback included:
+\vspace{0.1cm}
+\begin{itemize}
+    \item Consistent column aliases for readability
+    \item Dropdowns and updated foreign key displays using human-readable names
+    \item Moving Add buttons to the top of tables for accessibility
+    \item Standardized date formatting
+    \item Improved UI layout and centering
+    \item Bug fixes in update forms and dropdown population
+    \item Confirmation popups preceding delete and reset actions
+\end{itemize}
+
+\vspace{0.2cm}
+
+Overall, our application demonstrates not only the core of database design and web integration, but also a commitment to ease of use, aesthetic appeal and incorporation of independent feedback.
 \end{tcolorbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,7 +91,6 @@ EDIT ME
 
 \begin{tcolorbox}[colback=secondarycolor, colframe=primarycolor, arc=5mm]
 \begingroup
-\large
 The Oaklaura Bike Cooperative is a non-profit organization that accepts donations of old or broken bicycles, refurbishes them, and then sells them at an affordable price. The co-op sees 50-100 bicycles enter and exit their doors on a monthly basis. Due to limited funding, the co-op operates with a small team of 10 employees and relies heavily on volunteers to assist with bicycle repairs. At the current time there are about 100 volunteers that donate their time, and this is expected to grow over the course of the next five years. The co-op’s limited funding also requires they use a basic POS system that can only process one bike sale at a time, setting a limit of one bike per sales order. The co-op brings in on average between \$10,000 and \$25,000 per month, and most of this revenue is used to support the small team of dedicated employees as well as to provide community engagement events. 
 
 \vspace{0.2cm}
