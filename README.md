@@ -1,33 +1,63 @@
-# My Awesome Project
-Write a short sentence or two about this project and what it does. Be sure to include a link and a screenshot (we're front end devs so we can actually see our work!).
+# CS 340 Database Project (GROUP 1)
+This database project represents the culmination of 11 weeks of collaborative work by Jessica Ramirez and Grant Wu to learn the fundamentals of database design, SQL, and web application development. The project aims to create some organization for a ficticious bicyle cooperative inspired by real bicycle cooperitives Grant has gone to in Chicago.
 
-**Link to project:** http://recruiters-love-seeing-live-demos.com/
-
-![alt tag](http://placecorgi.com/1200/650)
+**Link to project:** [http://classwork.engr.oregonstate.edu:7013/]
 
 ## How It's Made:
 
-**Tech used:** HTML, CSS, JavaScript, Framework of choice
+**Tech used:** HTML, CSS, JavaScript, SQL, React, Express, Bootstrap
 
-Here's where you can go to town on how you actually built this thing. Write as much as you can here, it's totally fine if it's not too much just make sure you write *something*. If you don't have too much experience on your resume working on the front end that's totally fine. This is where you can really show off your passion and make up for that ten fold.
+This database was created using MySQL. Schemas were created using MySQL workbench. For the web application the React framework was used with Bootstrap to handle the UI.
 
-## Optimizations
-*(optional)*
+## Citations
 
-You don't have to include this section but interviewers *love* that you can not only deliver a final product that looks great but also functions efficiently. Did you write something then refactor it later and the result was 5x faster than the original implementation? Did you cache your assets? Things that you write in this section are **GREAT** to bring up in interviews and you can use this section as reference when studying for technical interviews!
+This project includes adapted code, styling, or inspiration from the following sources:
 
-## Lessons Learned:
+### OSU Course Material (CS 290 - Web Development)
 
-No matter what your experience level, being an engineer means continuously learning. Every time you build something you always have those *whoa this is awesome* or *wow I actually did it!* moments. This is where you should share those moments! Recruiters and interviewers love to see that you're self-aware and passionate about growing.
+- **Module 6: Exploration – Web Application Technology**  
+  Source code and structure adapted from the provided starter materials.  
+  [Canvas Link](https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948)
 
-## Examples:
-Take a look at these couple examples that I have in my own portfolio:
+- **Module 8: Exploration – Implementing CUD Operations in Your App**  
+  Used for implementing create, update, and delete (CUD) functionality.  
+  [Canvas Link](https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968)
 
-**Palettable:** https://github.com/alecortega/palettable
+---
 
-**Twitter Battle:** https://github.com/alecortega/twitter-battle
+### Design and Styling
 
-**Patch Panel:** https://github.com/alecortega/patch-panel
+- **Color Palette**  
+  Chosen from [Coolors.co](https://coolors.co/palette/000000-14213d-fca311-e5e5e5-ffffff)
+
+- **Custom CSS Styling**  
+  Generated with assistance from Claude (claude.ai) using the above color palette.
+
+---
+
+### React & UI Components
+
+- **Navbar Component**  
+  Based on a freely available React Bootstrap component.  
+  [React-Bootstrap Documentation](https://react-bootstrap.netlify.app/docs/components/navs)
+
+---
+
+### Form Validation Logic
+
+- **Email and Phone Validation**  
+  Assisted by ChatGPT using the prompt:  
+  > “Write me a React component that will validate the phone number and email in form.”
+
+---
+
+### README Template
+
+- **Template**  
+  Based on the structure from Alec Chernicki’s portfolio repository.  
+  [GitHub Link](https://github.com/alec-chernicki/portfolio-template/blob/master/README.md)
+
+
 
 
 
