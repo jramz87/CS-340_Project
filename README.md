@@ -43,14 +43,6 @@ This project includes adapted code, styling, or inspiration from the following s
 
 ---
 
-### Form Validation Logic
-
-- **Email and Phone Validation**  
-  Assisted by ChatGPT using the prompt:  
-  > “Write me a React component that will validate the phone number and email in form.”
-
----
-
 ### README Template
 
 - **Template**  
