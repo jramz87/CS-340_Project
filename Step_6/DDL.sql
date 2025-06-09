@@ -470,7 +470,7 @@ VALUES
         WHERE CONCAT(firstName, ' ', lastName) = 'Joe Wright'
     ),
     '2025-03-02', 
-    3299.99
+    999.99
 ),
 (
     (
