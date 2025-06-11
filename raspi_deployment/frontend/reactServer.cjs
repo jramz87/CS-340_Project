@@ -25,5 +25,5 @@ app.get('*', (req, res) => {
 // ########## LISTENER
 
 app.listen(PORT, () => {
-    console.log(`Server running: http://classwork.engr.oregonstate.edu:${PORT}...`);
+    console.log(`Server running: http://0.0.0.0:${PORT}...`);
 });

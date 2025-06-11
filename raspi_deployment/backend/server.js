@@ -342,6 +342,7 @@ app.post('/repairreports/update', async function (req, res) {
 // ########################################
 // ########## LISTENER
 
-app.listen(PORT, function () {
-    console.log('Express started on http://classwork.engr.oregonstate.edu:' + PORT + '; press Ctrl-C to terminate.');
+app.listen(PORT, '0.0.0.0', function () {
+    console.log('Express started on http://0.0.0.0:' + PORT + '; press Ctrl-C to terminate.');
+    console.log('Also accessible at http://192.168.6.127:' + PORT);
 });
