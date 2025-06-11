@@ -22,7 +22,9 @@ function RepairReports({ backendURL }) {
     const getData = async function () {
         try {
             // Make a GET request to the backend
-            const response = await fetch(backendURL + '/repairreports');
+            const response = await fetch(backendURL + '/repairreports', {
+                headers: {'ngrok-skip-browser-warning': 'true'}
+            });
             
             // Convert the response into JSON format
             const { repairreports, storepersonnel, bikes, allBikes } = await response.json();

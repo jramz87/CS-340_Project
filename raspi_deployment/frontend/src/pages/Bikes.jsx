@@ -14,7 +14,9 @@ function Bikes({ backendURL }) {
         const getData = async function () {
             try {
                 // Make a GET request to the backend
-                const response = await fetch(backendURL + '/bikes');
+                const response = await fetch(backendURL + '/bikes', {
+                    headers: {'ngrok-skip-browser-warning': 'true'}
+                });
                 
                 // Convert the response into JSON format
                 const {bikes} = await response.json();
@@ -23,8 +25,8 @@ function Bikes({ backendURL }) {
                 setBikes(bikes);
                 
             } catch (error) {
-              // If the API call fails, print the error to the console
-              console.log(error);
+                // If the API call fails, print the error to the console
+                console.log(error);
             }
     
         };

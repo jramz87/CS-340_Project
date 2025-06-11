@@ -14,7 +14,9 @@ function SalesReports({ backendURL }) {
         const getData = async function () {
             try {
                 // Make a GET request to the backend
-                const response = await fetch(backendURL + '/salesreports');
+                const response = await fetch(backendURL + '/salesreports', {
+                    headers: {'ngrok-skip-browser-warning': 'true'}
+                });
                 
                 // Convert the response into JSON format
                 const {salesreports} = await response.json();
@@ -23,8 +25,8 @@ function SalesReports({ backendURL }) {
                 setSalesReports(salesreports);
                 
             } catch (error) {
-              // If the API call fails, print the error to the console
-              console.log(error);
+                // If the API call fails, print the error to the console
+                console.log(error);
             }
     
         };

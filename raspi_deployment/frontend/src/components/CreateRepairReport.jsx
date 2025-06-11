@@ -98,6 +98,7 @@ const CreateRepairReport = ({ storepersonnel, bikes, backendURL, refreshRepairRe
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
                 },
                 body: JSON.stringify(formData),
             });

@@ -20,7 +20,9 @@ function Contacts({ backendURL }) {
         const getData = async function () {
             try {
                 // Make a GET request to the backend
-                const response = await fetch(backendURL + '/contacts');
+                const response = await fetch(backendURL + '/contacts', {
+                    headers: {'ngrok-skip-browser-warning': 'true'}
+                });
                 
                 // Convert the response into JSON format
                 const {contacts} = await response.json();
@@ -29,8 +31,8 @@ function Contacts({ backendURL }) {
                 setContacts(contacts);
                 
             } catch (error) {
-              // If the API call fails, print the error to the console
-              console.log(error);
+                // If the API call fails, print the error to the console
+                console.log(error);
             }
     
         };
@@ -53,24 +55,6 @@ function Contacts({ backendURL }) {
         // Handler for closing the edit form
         const handleCloseEditForm = () => {
             setEditingContact(null);
-        };
-
-        // Handler for deleting a report
-        const handleDelete = async (contactId) => {
-            try {
-                const response = await fetch(`${backendURL}/contacts/${contactId}`, {
-                    method: 'DELETE',
-                });
-
-                if (response.ok) {
-                    // Refresh the data after deletion
-                    getData();
-                } else {
-                    console.error('Failed to delete contact');
-                }
-            } catch (error) {
-                console.error('Error deleting contact:', error);
-            }
         };
 
 

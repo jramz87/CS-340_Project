@@ -14,7 +14,9 @@ function StorePersonnel({ backendURL }) {
         const getData = async function () {
             try {
                 // Make a GET request to the backend
-                const response = await fetch(backendURL + '/storepersonnel');
+                const response = await fetch(backendURL + '/storepersonnel', {
+                    headers: {'ngrok-skip-browser-warning': 'true'}
+                });
                 
                 // Convert the response into JSON format
                 const {storepersonnel} = await response.json();
@@ -23,8 +25,8 @@ function StorePersonnel({ backendURL }) {
                 setStorePersonnel(storepersonnel);
                 
             } catch (error) {
-              // If the API call fails, print the error to the console
-              console.log(error);
+                // If the API call fails, print the error to the console
+                console.log(error);
             }
     
         };

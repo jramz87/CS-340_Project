@@ -75,7 +75,8 @@ const CreateContactForm = ({ backendURL, refreshContacts, onClose }) => {
             const response = await fetch(`${backendURL}/contacts`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
                 },
                 body: JSON.stringify(requestData)
             });

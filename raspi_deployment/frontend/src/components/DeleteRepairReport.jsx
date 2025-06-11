@@ -35,7 +35,10 @@ const DeleteRepairReportForm = ({ rowObject, backendURL, refreshReports }) => {
         try {
             const response = await fetch(`${backendURL}/repairreports/delete`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                },
                 body: JSON.stringify(formData),
             });
 

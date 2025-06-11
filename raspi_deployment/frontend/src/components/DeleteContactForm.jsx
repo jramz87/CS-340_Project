@@ -33,7 +33,10 @@ const DeleteContactForm = ({ rowObject, backendURL, refreshContacts }) => {
         try {
             const response = await fetch(`${backendURL}/contacts/delete`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                },
                 body: JSON.stringify(formData),
             });
 

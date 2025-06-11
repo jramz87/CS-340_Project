@@ -112,6 +112,7 @@ function UpdateRepairReport({ report, storepersonnel, bikes, backendURL, refresh
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
                 },
                 body: JSON.stringify(formData),
             });

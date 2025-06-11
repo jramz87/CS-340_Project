@@ -37,6 +37,7 @@ function Navigation({ backendURL }) {
         try {
             const response = await fetch(`${backendURL}/reset-db`, {
                 method: 'POST',
+                headers: {'ngrok-skip-browser-warning': 'true'},
             });
 
             if (response.ok) {
