@@ -343,6 +343,5 @@ app.post('/repairreports/update', async function (req, res) {
 // ########## LISTENER
 
 app.listen(PORT, '0.0.0.0', function () {
-    console.log('Express started on http://0.0.0.0:' + PORT + '; press Ctrl-C to terminate.');
-    console.log('Also accessible at http://192.168.6.127:' + PORT);
+    console.log('Express started on http://0.0.0.0:' + PORT + '; press Ctrl-C to terminate.')
 });
