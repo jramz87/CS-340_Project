@@ -7,7 +7,7 @@ This database project represents the culmination of 11 weeks of collaborative wo
 
 **Tech used:** HTML, CSS, JavaScript, SQL, React, Express, Bootstrap, Raspberry Pi, Ngrok
 
-This database was created using MySQL. Schemas were created using MySQL workbench. For the web application the React framework was used with Bootstrap to handle the UI.
+This database was created using MySQL. Schemas were created using MySQL workbench. For the web application the React framework was used with Bootstrap to handle the UI. Three separate servers are being run on a local Raspberry Pi for the database, UI backend and UI frontend. Ngrok tunnels are used to deploy each of these servers publically.
 
 ## Citations
 
