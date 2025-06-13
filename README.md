@@ -3,6 +3,8 @@ This database project represents the culmination of 11 weeks of collaborative wo
 
 **Link to project:** [Changed from OSU Engineering Servers to local Raspberry Pi server](https://f6fb-162-196-65-9.ngrok-free.app/)
 
+A full description of the database motivation and design may be found [here](https://github.com/jramz87/CS-340_Project/blob/main/Step_6/report/ProjectStep_6_draft.pdf).
+
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, SQL, React, Express, Bootstrap, Raspberry Pi, Ngrok
