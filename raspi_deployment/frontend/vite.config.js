@@ -7,7 +7,7 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 7013,
     allowedHosts: [
-      'f6fb-162-196-65-9.ngrok-free.app',
+      'c91b-162-196-65-9.ngrok-free.app',
       'localhost',
       '127.0.0.1'
     ]
