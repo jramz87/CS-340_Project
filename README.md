@@ -1,13 +1,13 @@
 # CS 340 Database Project (GROUP 1)
 This database project represents the culmination of 11 weeks of collaborative work by Jessica Ramirez and Grant Wu to learn the fundamentals of database design, SQL, and web application development. The project aims to create some organization for a ficticious bicyle cooperative inspired by real bicycle cooperitives Grant has gone to in Chicago.
 
-**Link to project:** [http://classwork.engr.oregonstate.edu:7013/]
+**Link to project:** (http://classwork.engr.oregonstate.edu:7013/]](https://c91b-162-196-65-9.ngrok-free.app/)
 
 ## How It's Made:
 
-**Tech used:** HTML, CSS, JavaScript, SQL, React, Express, Bootstrap
+**Tech used:** HTML, CSS, JavaScript, SQL, React, Express, Bootstrap, Ngrok
 
-This database was created using MySQL. Schemas were created using MySQL workbench. For the web application the React framework was used with Bootstrap to handle the UI.
+This database was created using MySQL. Schemas were created using MySQL workbench. For the web application the React framework was used with Bootstrap to handle the UI. Ngrok tunnels are being used to publicly deploy a local MariaDB server (run on a raspberry pi) as well as backend and frontend servers.
 
 ## Citations
 
