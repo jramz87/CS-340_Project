@@ -1,7 +1,7 @@
 # CS 340 Database Project (GROUP 1)
 This database project represents the culmination of 11 weeks of collaborative work by Jessica Ramirez and Grant Wu to learn the fundamentals of database design, SQL, and web application development. The project aims to create some organization for a ficticious bicyle cooperative inspired by real bicycle cooperitives Grant has gone to in Chicago.
 
-**Link to project:** (http://classwork.engr.oregonstate.edu:7013/]](https://c91b-162-196-65-9.ngrok-free.app/)
+**Link to project:** (https://c91b-162-196-65-9.ngrok-free.app/)
 
 ## How It's Made:
 
